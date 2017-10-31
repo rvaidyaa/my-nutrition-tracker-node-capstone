@@ -1,7 +1,8 @@
 # My Nutrition Tracker Node Capstone
 Node capstone for the thinkful course. (like line 5).
 
-Description of appliction
+
+My nutritional tracker is an app designed with cooking and nutrition in mind. You can add custom meals and portions and the application will track the micro and macro nutrients you consume. You can even get weekly and daily totals!
 
 ## Screenshots
 ![Landing page screen shot](https://github.com/rvaidyaa/not-just-luck-thinkful-full-stack-capstone/blob/master/public/img/njl01.png)

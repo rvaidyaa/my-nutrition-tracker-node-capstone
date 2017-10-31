@@ -4,22 +4,181 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- b/c style css reads the font-->
 </head>
 
 <body>
-   <header></header>
-   <main class="login"></main>
-   <main class="register"></main>
-<!--   <main class="x"></main> a main for each page-->
-   <footer></footer>
-
-
-
-
-
-
-
+    <header>
+        <h1>My nutritional Tracker!</h1>
+    </header>
+    <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with cooking and nutrition in mind. You can add custom meals and portions and the application will track the micro and macro nutrients you consume. You can even get weekly and daily totals!
+    </div>
+    <main class="landing">
+        <section class="column">
+            <a href="url" class="user-input">Create Account</a>
+        </section>
+        <section class="column">
+            <form id='form'>
+                <input type='text' placeholder="Username" class='user-input'>
+                <input type='password' placeholder='Password' class='user-input'>
+                <input type="submit" class="user-input" value='Login'>
+            </form>
+        </section>
+        <section class="column">
+            <a href="url" class="user-input">Demo Page</a>
+        </section>
+    </main>
+    <main class="signup">
+        <h1>Sign up for my Nutritional Tracker</h1>
+        <form action="" id="form" class='signup-form'>
+            <input type='text' placeholder="Username" class='user-input'>
+            <input type='password' placeholder='Password' class='user-input'>
+            <input type='password' placeholder='Repeat password' class='user-input'>
+            <input type="submit" class="user-input" value='Sign up!'>
+        </form>
+    </main>
+    <main class="add-recipe">
+        <h1>Add New Recipe!</h1>
+        <form action="" class="new-recipe">
+            <input type='text' placeholder="Search Ingrediant" class='ingrediant-input'>
+            <input type="submit" class="user-input" value='Search'>
+        </form>
+        <div class="api-results">Closest Matching</div>
+        <form action="" class="matching-results">
+            <section class="two-columns">
+                <span class="results">Tomatoes Canned</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+                <span class="results">Tomatoes Large</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+                <span class="results">Tomatoes Medium</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+                <span class="results">Tomatoes Small</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+            </section>
+            <!-- Change from dropdown to input for grams-->
+        </form>
+        <div class="recipe-name">Recipe name</div>
+        <form action="" class="recipe">
+            <input type='text' placeholder="Enter Recipe Name" class='recipe-input'>
+            <input type="submit" class="add-recipes" value='Add Recipe'>
+        </form>
+        <div class="recipe-name">Ingrediants Added</div>
+        <span class="added-foods">Tomatoes Small</span><span class="added-grams">123g</span><br>
+        <span class="added-foods">Onions</span><span class="added-grams">55g</span><br>
+        <span class="added-foods">Whole Chicken</span><span class="added-grams">77g</span>
+        <form action="" class="save">
+            <input type="submit" class="save-recipe" value='Save/View Nutrient Profile'>
+        </form>
+    </main>
+    <main class="weekly">
+        <h1>Weekly Macro Micro Totals</h1>
+        <div role="weekly-totals">
+            <span class='totals'>Nutrient Name</span>
+            <span class='totals'>Total</span>
+            <span class='totals'>Average/Day</span>
+            <span class='totals'>% Recommended</span>
+        </div>
+        <div class="three-colums">
+            <span class='weeklys'>Kcal</span><br>
+            <span class='weeklys'>Carb</span><br>
+            <span class='weeklys'>Sugar</span><br>
+            <span class='weeklys'>SoluableFiber</span><br>
+            <span class='weeklys'>Insoluble Fiber</span><br>
+            <span class='weeklys'>Fat</span><br>
+            <span class='weeklys'>Protein</span><br>
+            <span class='weeklys'>Sodium</span><br>
+            <span class='weeklys'>Potassium</span><br>
+            <span class='weeklys'>Magnesium</span><br>
+            <span class='weeklys'>Calcium</span>
+        </div>
+        <div class="three-colums">
+            <span class='weeklys'>13500 Kcal</span><br>
+            <span class='weeklys'>1200 G</span><br>
+            <span class='weeklys'>100 G</span><br>
+            <span class='weeklys'>100 G</span><br>
+            <span class='weeklys'>155 G</span><br>
+            <span class='weeklys'>2000 G</span><br>
+            <span class='weeklys'>1500 G</span><br>
+            <span class='weeklys'>10000 MG</span><br>
+            <span class='weeklys'>6000 MG</span>
+            <span class='weeklys'>600 MG</span><br>
+            <span class='weeklys'>1000 MG</span>
+        </div>
+        <div class="three-colums">
+            <span class='weeklys'>1600 Kcal</span><br>
+            <span class='weeklys'>180 G</span><br>
+            <span class='weeklys'>18 G</span><br>
+            <span class='weeklys'>15 G</span><br>
+            <span class='weeklys'>21.5 G</span><br>
+            <span class='weeklys'>225 G</span><br>
+            <span class='weeklys'>200 G</span><br>
+            <span class='weeklys'>1500 MG</span><br>
+            <span class='weeklys'>800 MG</span><br>
+            <span class='weeklys'>Magnesium</span><br>
+            <span class='weeklys'>Calcium</span>
+        </div>
+        <div class="three-colums">
+            <span class='weeklys'>85</span><br>
+            <span class='weeklys'>98</span><br>
+            <span class='weeklys'>66</span><br>
+            <span class='weeklys'>55</span><br>
+            <span class='weeklys'>79</span><br>
+            <span class='weeklys'>62</span><br>
+            <span class='weeklys'>15</span><br>
+            <span class='weeklys'>85</span><br>
+            <span class='weeklys'>112</span><br>
+            <span class='weeklys'>137</span><br>
+            <span class='weeklys'>51</span>
+        </div>
+        <div role='macro-nutrient-spread' class='macro-div'>
+            <span class='macro-spread'>Protein</span>
+            <span class='macro-spread'>Fat</span>
+            <span class='macro-spread'>Carb</span>
+            <span class='macro-spread'>Sugar</span>
+        </div>
+        <span class='macro-spread'>20%</span>
+        <span class='macro-spread'>60%</span>
+        <span class='macro-spread'>15%</span>
+        <span class='macro-spread'>5%</span>
+    </main>
+    <main class="x"></main>
+    <footer>
+        'Created by Rahul Vaidya'
+    </footer>
 
 
 
