@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- b/c style css reads the font-->
+</head>
+
+<body>
+    <main class="add-recipe">
+        <h1>Add New Recipe!</h1>
+        <form action="" class="new-recipe">
+            <input type='text' placeholder="Search Ingrediant" class='ingrediant-input'>
+            <input type="submit" class="user-input" value='Search'>
+        </form>
+        <div class="api-results">Closest Matching</div>
+        <form action="" class="matching-results">
+            <section class="two-columns">
+                <span class="results">Tomatoes Canned</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+                <span class="results">Tomatoes Large</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+                <span class="results">Tomatoes Medium</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+                <span class="results">Tomatoes Small</span>
+                <input type="submit" class="add-item" value='+'>
+                <div class="dropdown">
+                    <button class="dropbtn">Quantity</button>
+                    <div class="dropdown-content">
+                        <a href="#">100g</a>
+                        <a href="#">200g</a>
+                        <a href="#">300g</a>
+                    </div>
+                </div>
+            </section>
+            <!-- Change from dropdown to input for grams-->
+        </form>
+        <div class="recipe-name">Recipe name</div>
+        <form action="" class="recipe">
+            <input type='text' placeholder="Enter Recipe Name" class='recipe-input'>
+            <input type="submit" class="add-recipes" value='Add Recipe'>
+        </form>
+        <div class="recipe-name">Ingrediants Added</div>
+        <span class="added-foods">Tomatoes Small</span><span class="added-grams">123g</span><br>
+        <span class="added-foods">Onions</span><span class="added-grams">55g</span><br>
+        <span class="added-foods">Whole Chicken</span><span class="added-grams">77g</span><br>
+        <form action="" class="save">
+            <input type="submit" class="add-recipes" value='Save/View Nutrient Profile'>
+        </form>
+    </main>
+
+</body>
+<footer>
+    'Created by Rahul Vaidya'
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src='js/client.js'></script>
+
+</html>
