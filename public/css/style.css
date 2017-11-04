@@ -208,7 +208,8 @@ h1 {
     text-align: center;
 }
 
-.add-item {
+.add-item,
+.add-amount {
     display: inline-block;
     margin: 5px;
     font-size: 16px;
@@ -222,6 +223,10 @@ h1 {
     display: inline-block;
     text-align: center;
     margin-right: auto;
+}
+
+.add-amount {
+    width: 6rem;
 }
 
 .dropdown {
@@ -469,16 +474,33 @@ footer {
     }
 }
 
-/*ipad potrait  max-width means up to 768*/
+/*ipad potrait . max-width means up to 768*/
 @media only screen and (max-width: 768px) {
+    main {
+        width: 100%;
+    }
+
+    header {
+        width: 100%;
+    }
+
+    .catch {
+        width: 100%
+    }
+
+    .signup {
+        width: 100%;
+    }
+
     a {
-        font-size: 12px;
+        font-size: 10px;
         line-height: 13px;
     }
 
     h1 {
         font-size: .85rem;
         line-height: 13px;
+        width: 100%;
     }
 
     body {
@@ -526,9 +548,17 @@ footer {
     }
 
     .results {
-        margin: 0px;
-        width: 100%;
+        margin: .2rem;
+        width: 70%;
         line-height: 10px;
+    }
+
+    main.saved-recipes {
+        width: 100%;
+    }
+
+    main.nutrient-profile {
+        width: 100%;
     }
 
     .dropbtn {
@@ -538,7 +568,12 @@ footer {
 
     .add-item {
         font-size: 12px;
-        line-height: 13px;
+        line-height: 10px;
+    }
+
+    .add-amount {
+        font-size: 12px;
+        line-height: 10px;
     }
 
     .dropdown-content {
@@ -562,17 +597,18 @@ footer {
     }
 
     .added-grams {
-        font-size: 12px;
+        font-size: 10px;
         line-height: 10px;
         width: 40%;
     }
 
     .save {
         width: 100%;
+        font-size: 12px;
     }
 
     .title {
-        font-size: 16px;
+        font-size: 13px;
     }
 
     header {}
@@ -587,8 +623,13 @@ footer {
         width: 8rem;
     }
 
+    .add-recipe {
+        width: 100%;
+    }
+
     .totals {
-        font-size: 10px;
+        font-size: 8px;
+        padding: 10px 0px;
     }
 
     .macro-spread {
