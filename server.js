@@ -1,5 +1,4 @@
 const User = require('./models/user');
-const Achievement = require('./models/achievement');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
