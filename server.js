@@ -1,4 +1,5 @@
-const User = require('./models/user');
+const User = require('./models/users');
+const online = require('./models/online');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -92,9 +93,8 @@ app.post('/users/create', (req, res) => {
 });
 
 // signing in a user
-app.post('/signin', function (req, res) {
-    const user = req.body.username;
-    const pw = req.body.password;
+app.post('/users/login', function (req, res) {
+    console.log(req.body.username, req.body.password)
     User
         .findOne({
             username: req.body.username
@@ -119,8 +119,24 @@ app.post('/signin', function (req, res) {
                             message: "Not found"
                         });
                     } else {
-                        var logInTime = new Date();
+                        var logInTime = new Date().getTime() / 1000;
                         console.log("User logged in: " + req.body.username + ' at ' + logInTime);
+
+                        online.create({
+                            username: req.body.username,
+                            unixtime: logInTime,
+                        }, (err, item) => {
+                            if (err) {
+                                return res.status(500).json({
+                                    message: 'Internal Server Error'
+                                });
+                            }
+                            if (item) {
+                                console.log("User logged in: " + req.body.username + ' at ' + logInTime + "online success");
+//                                return res.json(item);
+                            }
+                        });
+
                         return res.json(items);
                     }
                 });

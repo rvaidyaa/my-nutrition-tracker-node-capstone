@@ -458,8 +458,7 @@ footer {
     margin-left: auto;
     margin-right: auto;
     margin-top: 13px;
-    height: 2rem;
-    line-height: 2rem;
+    padding: 10px;
 }
 
 /*ipad lanscape / small laptop*/
@@ -646,11 +645,6 @@ footer {
         height: 30px;
         line-height: 30px;
     }
-
-    footer {
-        height: 1rem;
-        line-height: 1rem;
-    }
 }
 
 /*iPhone landscape*/
@@ -664,9 +658,5 @@ footer {
 @media only screen and (max-width: 320px) {
     body {
         color: purple;
-    }
-
-    footer {
-        line-height: .5rem;
     }
 }
