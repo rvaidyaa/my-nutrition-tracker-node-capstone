@@ -28,7 +28,8 @@ function registerUser(username, password) {
             alert('Welcome to my Nutrition tracker, you may now sign in from the home page!');
             // go to main signin page
             //            backToHomePage();
-            document.location.href = "/index.html";
+            $('#js-signup').hide();
+
 
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -66,9 +67,62 @@ function loginUser(inputUname, inputPw) {
             //            alert('Invalid username and password combination. Pleae check your username and password and try again.');
         });
 }
+
+function ajaxNutritionSearch(searchTerm) {
+
+    $.ajax({
+            type: "GET",
+            url: "/ingredient/" + searchTerm,
+            dataType: 'json',
+        })
+        .done(function (dataOutput) {
+            console.log(dataOutput);
+            console.log(dataOutput.branded[0].brand_name);
+            console.log(dataOutput.branded[0].food_name);
+            console.log(dataOutput.branded[0].food_name);
+            console.log(dataOutput.branded[0].food_name);
+            console.log(dataOutput.common[1].food_name);
+            console.log(dataOutput.common[2].food_name);
+
+
+            displayNutritionSearch(dataOutput.branded);
+            // displayActiveActivityResults(JSON.parse(resultsForJsonParse));
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function displayNutritionSearch(dataMatches) {
+    //create an empty variable to store one LI for each of the results
+    var buildTheHtmlOutput = "";
+    $.each(dataMatches, function (dataMatchesKey, dataMatchesValue) {
+        //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+        buildTheHtmlOutput += '<li class="events">';
+        buildTheHtmlOutput += (dataMatchesValue.food_name);
+        buildTheHtmlOutput += '<input type = "submit" class = "add-item" value = "+"> <br> ';
+        buildTheHtmlOutput += '</li>';
+    });
+
+    //use the HTML output to show it in the index.html
+    $(".api-results").html(buildTheHtmlOutput);
+}
+
+
+
+
+
+
+
+
 //Step 2 - Use function and objects and find the triggers
 
+
+
 $(document).ready(function () {
+
     console.log("initial logged in user = ", loggedInUser);
     var nowUnixTime = new Date().getTime() / 1000;
     if (loggedInUser != "") {
@@ -129,4 +183,48 @@ $(document).ready(function () {
 
         };
     });
+    //User then Logs in and is on Userpage -main flow
+    //Jump to Daily Tracker --off shoot
+    $('#js-daily-tracker').on('click', function (event) {
+        event.preventDefault();
+        document.location.href = "/daily.html"
+    });
+    //Jump to Weekly tracker --off shoot
+    $('#js-weekly-tracker').on('click', function (event) {
+        event.preventDefault();
+        document.location.href = "/weekly.html"
+    });
+    //Jump to saved meals -main flow
+    $('#js-saved-meals').on('click', function (event) {
+        event.preventDefault();
+        document.location.href = "/savedrecipe.html"
+    }); // from saved meals to add a meal
+    $('#js-add-meal').on('click', function (event) {
+        event.preventDefault();
+        document.location.href = "/newrecipe.html"
+    });
+    // Save a recipe and view nutrient profile, more needs to be done here
+    $('#js-save-nutrient-profile').on('click', function (event) {
+            event.preventDefault();
+            var recipeName = '';
+            recipeName = $('#js-recipe-name').val();
+            console.log(recipeName);
+            //        if (recipeName === '') {
+            //            alert('Please enter a recipe name');
+            //        } else {
+            recipeName = $('#js-recipe-name').val();
+            document.location.href = "/nutrient.html"
+            console.log(recipeName);
+        };
+    }); $('#js-search-ingrediant').on('click', function (event) {
+    event.preventDefault();
+    let searchTerm = $('#js-search-field').val();
+    if (searchTerm == '') {
+        alert('Please enter a food item');
+    } else {
+        ajaxNutritionSearch(searchTerm);
+    }
+
+});
+
 });

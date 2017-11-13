@@ -1,10 +1,16 @@
 const User = require('./models/users');
 const online = require('./models/online');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
 const moment = require('moment');
 const cors = require('cors');
+
+
+const unirest = require('unirest');
+const events = require('events');
+
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
@@ -12,9 +18,14 @@ const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static('public'));
+app.use(cookieParser());
+app.use(express.static('public'));;
 
 mongoose.Promise = global.Promise;
+
+let USER_LOGGEDIN_COOKIE = 'user-loggedin';
+
+let loggedInUser = "";
 
 // ---------------- RUN/CLOSE SERVER -----------------------------------------------------
 let server = undefined;
@@ -52,7 +63,89 @@ function closeServer() {
     }));
 }
 
+
+// external API call
+const getFromNutritionix = function (searchTerm) {
+    let emitter = new events.EventEmitter();
+    //console.log("inside getFromActive function");
+    unirest.get("https://trackapi.nutritionix.com/v2/search/instant?query=" + searchTerm)
+        .header("Accept", "application/json")
+        .header("Content-Type", "application/json")
+        .header("x-app-id", "3695a268")
+        .header("x-app-key", "684be36e7fdca1a4cbeac908344a2cb3")
+        .end(function (result) {
+            console.log(result.status, result.headers, result.body);
+            //success scenario
+            if (result.ok) {
+                emitter.emit('end', result.body);
+            }
+            //failure scenario
+            else {
+                emitter.emit('error', result.code);
+            }
+        });
+
+    return emitter;
+};
+
+
 // ---------------USER ENDPOINTS-------------------------------------
+
+//app.get('/', (req, res) => {
+//    const cookie = req.cookies[USER_LOGGEDIN_COOKIE];
+//    console.log("=++++++++>>>>>app get cookie = ", cookie);
+//    if (cookie === "user-loggedin") {
+//        res.sendFile(__dirname + '/public/index.html');
+//
+//    }
+//});
+
+
+
+// MISC ------------------------------------------
+// catch-all endpoint if client makes request to non-existent endpoint
+app.use('*', (req, res, next) => {
+    // check if client sent cookie
+    var cookie = req.cookies.USER_LOGGEDIN_COOKIE;
+    console.log('inital cookies = ', req.cookies);
+    if ((cookie == undefined) || (cookie.lenght == 0)) {
+        // no: set a new cookie
+
+        res.cookie('USER_LOGGEDIN_COOKIE', loggedInUser, {
+            maxAge: 900000,
+            httpOnly: true
+        });
+        console.log('cookie created successfully');
+
+    } else {
+        // yes, cookie was already present
+        console.log('cookie exists', cookie);
+    }
+    console.log('cookie set = ', req.cookies);
+    next(); // <-- important!
+});
+
+app.get('/ingredient/:name', function (req, res) {
+
+    //    external api function call and response
+
+    var searchReq = getFromNutritionix(req.params.name);
+
+    //get the data from the first api call
+    searchReq.on('end', function (item) {
+        res.json(item);
+    });
+
+    //error handling
+    searchReq.on('error', function (code) {
+        res.sendStatus(code);
+    });
+
+});
+
+
+
+
 // POST -----------------------------------
 // creating a new user
 app.post('/users/create', (req, res) => {
@@ -94,6 +187,7 @@ app.post('/users/create', (req, res) => {
 
 // signing in a user
 app.post('/users/login', function (req, res) {
+
     console.log(req.body.username, req.body.password)
     User
         .findOne({
@@ -110,7 +204,7 @@ app.post('/users/login', function (req, res) {
                     message: "Not found!"
                 });
             } else {
-                items.validatePassword(req.body.password, function (err, isValid) {
+                items.validatePassword(req.body.password, function (err, isValid) { //where does validate go to in order to do the pw checking logic
                     if (err) {
                         console.log('There was an error validating the password.');
                     }
@@ -119,8 +213,7 @@ app.post('/users/login', function (req, res) {
                             message: "Not found"
                         });
                     } else {
-                        var logInTime = new Date().getTime() / 1000;
-                        console.log("User logged in: " + req.body.username + ' at ' + logInTime);
+
 
                         online.create({
                             username: req.body.username,
@@ -132,12 +225,17 @@ app.post('/users/login', function (req, res) {
                                 });
                             }
                             if (item) {
-                                console.log("User logged in: " + req.body.username + ' at ' + logInTime + "online success");
-//                                return res.json(item);
+                                let logInTime = new Date().getTime() / 1000;
+                                loggedInUser = req.body.username;
+                                res.cookie('USER_LOGGEDIN_COOKIE', loggedInUser, {
+                                    maxAge: 900000,
+                                    httpOnly: true
+                                });
+                                console.log("User logged in: " + loggedInUser + ' at ' + logInTime);
                             }
                         });
 
-                        return res.json(items);
+                        return res.json(loggedInUser);
                     }
                 });
             };
@@ -247,13 +345,34 @@ app.delete('/achievement/:id', function (req, res) {
     });
 });
 
-// MISC ------------------------------------------
-// catch-all endpoint if client makes request to non-existent endpoint
-app.use('*', (req, res) => {
-    res.status(404).json({
-        message: 'Not Found'
-    });
-});
+//// set a cookie
+//app.use(function (req, res, next) {
+//    // check if client sent cookie
+//    var cookie = req.cookies.USER_LOGGEDIN_COOKIE;
+//    console.log('inital cookies = ', req.cookies);
+//    if (cookie === undefined) {
+//        // no: set a new cookie
+//
+//        res.cookie('USER_LOGGEDIN_COOKIE', loggedInUser, {
+//            maxAge: 900000,
+//            httpOnly: true
+//        });
+//        console.log('cookie created successfully');
+//        console.log('cookie set = ', req.cookies.USER_LOGGEDIN_COOKIE);
+//    } else {
+//        // yes, cookie was already present
+//        console.log('cookie exists', cookie);
+//    }
+//    next(); // <-- important!
+//});
+//
+//// MISC ------------------------------------------
+//// catch-all endpoint if client makes request to non-existent endpoint
+//app.use('*', (req, res) => {
+//    res.status(404).json({
+//        message: 'Not Found'
+//    });
+//});
 
 exports.app = app;
 exports.runServer = runServer;

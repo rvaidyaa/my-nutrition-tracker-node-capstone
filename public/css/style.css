@@ -209,7 +209,8 @@ h1 {
 }
 
 .add-item,
-.add-amount {
+.add-amount,
+.add-percent {
     display: inline-block;
     margin: 5px;
     font-size: 16px;
@@ -219,7 +220,6 @@ h1 {
     border-color: #9e9e9e;
     line-height: 25px;
     padding: 0.7rem 1.1rem;
-    width: 3rem;
     display: inline-block;
     text-align: center;
     margin-right: auto;
@@ -227,6 +227,11 @@ h1 {
 
 .add-amount {
     width: 6rem;
+}
+
+.add-percent {
+    width: 11rem;
+    line-height: 20px;
 }
 
 .dropdown {
@@ -548,7 +553,7 @@ footer {
 
     .results {
         margin: .2rem;
-        width: 70%;
+        width: 40%;
         line-height: 10px;
     }
 
@@ -581,6 +586,12 @@ footer {
 
     .recipe-name {
         font-size: 13px;
+    }
+
+    .add-percent {
+        font-size: 12px;
+        width: 40%;
+        line-height: 0px;
     }
 
     .recipe-input {

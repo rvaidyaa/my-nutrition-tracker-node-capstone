@@ -13,60 +13,45 @@
     <header>
         <h1>My nutritional Tracker!</h1>
     </header>
-    <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with cooking and nutrition in mind. You can add custom meals and portions and the application will track the micro and macro nutrients you consume. You can even get weekly and daily totals!
+    <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with nutrition in mind. It is for busy professionals who eat at restaurants and want to track their nutrients.
     </div>
     <main class="landing">
         <form id='form'>
             <a href="url" class="user-input">Create Account</a>
-            <input type='text' placeholder="Username" class='user-input'>
-            <input type='password' placeholder='Password' class='user-input'>
+            <input type='text' placeholder="Username" class='user-input' id='login-username-form' value='testuser'>
+            <input type='password' placeholder='Password' class='user-input' id='login-password-form' value='123'>
             <input type="submit" class="user-input" value='Login'>
         </form>
     </main>
-    <main class="signup">
+    <main class="signup" id='js-signup'>
         <h1>Sign up for my Nutritional Tracker</h1>
-        <form action="" id="form" class='signup-form'>
-            <input type='text' placeholder="Username" class='user-input'>
-            <input type='password' placeholder='Password' class='user-input'>
-            <input type='password' placeholder='Repeat password' class='user-input'>
+        <form action="" id="register-form" class='signup-form'>
+            <input type='text' placeholder="Username" class='user-input' id='register-username-input' value='testuser'>
+            <input type='password' placeholder='Password' class='user-input' id='register-password-input' value='123'>
+            <input type='password' placeholder='Repeat password' class='user-input' id='register-verify-password-input' value='123'>
             <input type="submit" class="user-input" value='Sign up!'>
         </form>
     </main>
-    <main class="add-recipe">
-        <h1>Add New Recipe!</h1>
+    <main class="add-recipe" id='js-add-recipe'>
+        <h1>Add a Meal</h1>
         <form action="" class="new-recipe">
-            <input type='text' placeholder="Search Ingrediant" class='ingrediant-input'>
-            <input type="submit" class="user-input" value='Search'>
+            <input type='text' placeholder="Search Food item" class='ingrediant-input' id='js-search-field'>
+            <input type="submit" class="user-input" value='Search' id='js-search-ingrediant'>
         </form>
         <div class="api-results">Closest Matching</div>
-        <form action="" class="matching-results">
-            <section class="two-columns">
-                <span class="results">Tomatoes Canned</span>
-                <input type="submit" class="add-item" value='+'>
-                <input type="text" class="add-amount" placeholder='grams'>
-                <span class="results">Tomatoes Large</span>
-                <input type="submit" class="add-item" value='+'>
-                <input type="text" class="add-amount" placeholder='grams'>
-                <span class="results">Tomatoes Medium</span>
-                <input type="submit" class="add-item" value='+'>
-                <input type="text" class="add-amount" placeholder='grams'>
-                <span class="results">Tomatoes Small</span>
-                <input type="submit" class="add-item" value='+'>
-                <input type="text" class="add-amount" placeholder='grams'>
-            </section>
-            <!-- Change from dropdown to input for grams-->
-        </form>
+
+        <!--
         <div class="recipe-name">Recipe name</div>
         <form action="" class="recipe">
-            <input type='text' placeholder="Enter Recipe Name" class='recipe-input'>
-            <input type="submit" class="add-recipes" value='Add Recipe'>
+            <input type='text' placeholder="Enter Recipe Name" class='recipe-input' id='js-recipe-name'>
         </form>
+-->
         <div class="recipe-name">Ingrediants Added</div>
         <span class="added-foods">Tomatoes Small</span><span class="added-grams">123g</span><br>
         <span class="added-foods">Onions</span><span class="added-grams">55g</span><br>
         <span class="added-foods">Whole Chicken</span><span class="added-grams">77g</span><br>
         <form action="" class="save">
-            <input type="submit" class="add-recipes" value='Save/View Nutrient Profile'>
+            <input type="submit" class="add-recipes" value='Save/View Nutrient Profile' id='js-save-nutrient-profile'>
         </form>
     </main>
     <main class="weekly">
@@ -141,8 +126,9 @@
         <span class='macro-spread'>5%</span>
     </main>
     <main class="saved-recipes">
-        <h1>Saved Recipes<br> Click to view/add
+        <h1>Calendar View<br> Click to view/add
         </h1>
+        <button class="results" id=js-add-meal>Add New Meal</button>
         <div class="save">
             <p class="stored-recipes">
                 <span><a href="" class="title">Chicken Noodle Soup</a></span><br>
@@ -251,7 +237,7 @@
         </div>
     </main>
     <main class="nutrient-profile">
-        <h1>Chicken Noodle Soup</h1>
+        <h1>My Current Meal</h1>
         <form action="" class="matching-results">
             <div role="daily totals">
                 <div class="dropdown">
@@ -266,16 +252,10 @@
             </div>
             <section class="two-columns">
                 <button class="results">Back to Saved</button>
-                <input type="submit" class="add-item" value='+'>
-                <div class="dropdown">
-                    <button class="dropbtn">Portion</button>
-                    <div class="dropdown-content">
-                        <a href="#">1/2</a>
-                        <a href="#">1/3</a>
-                        <a href="#">1/4</a>
-                        <a href="#">1/5</a>
-                    </div>
-                </div>
+                <form action="">
+                    <input type="submit" class="add-item" value='Add Meal'>
+                    <input type='percent' placeholder='Enter % Eaten' class='add-percent'>
+                </form>
 
             </section>
             <!-- Change from dropdown to input for grams-->
@@ -298,7 +278,7 @@
             <span class='weeklys'>Calcium</span>
         </div>
         <div class="three-colums">
-            <span class='weeklys'>13500 </span><br>
+            <span class='weeklys'>13500 Kcal</span><br>
             <span class='weeklys'>1200 G</span><br>
             <span class='weeklys'>100 G</span><br>
             <span class='weeklys'>100 G</span><br>
@@ -331,13 +311,14 @@
         <span class='macro-spread'>60%</span>
         <span class='macro-spread'>15%</span>
         <span class='macro-spread'>5%</span>
+
     </main>
     <main class="main-page">
         <h1>Welcome Ronald</h1>
         <div role="weekly-totals">
-            <button class='results'>Logout</button>
-            <button class='results'>Weekly Tracker</button>
-            <button class='results'>Daily Tracker</button>
+            <button class='results' id='js-logout-button'>Logout</button>
+            <button class='results' id='js-weekly-tracker'>Weekly Tracker</button>
+            <button class='results' id='js-daily-tracker'>Daily Tracker</button>
 
         </div>
         <div role="daily totals">
@@ -353,7 +334,7 @@
 
         </div>
         <div class="two-columns">
-            <button class='results'>Add Meal</button><br>
+            <button class='results' id='js-saved-meals'>Add Meal</button><br>
             <p class="stored-recipes"><span><a href="" class="title">Steak and Mushrooms</a></span><br>
                 <span class="info">1600 Kcal total</span><br>
                 <span class="macro-spread">P</span>
@@ -397,7 +378,7 @@
             <span class='weeklys'>Calcium</span>
         </div>
         <div class="three-colums">
-            <span class='weeklys'>1600 </span><br>
+            <span class='weeklys'>1600 Kcal</span><br>
             <span class='weeklys'>180 G</span><br>
             <span class='weeklys'>18 G</span><br>
             <span class='weeklys'>15 G</span><br>
