@@ -71,8 +71,38 @@ const getFromNutritionix = function (searchTerm) {
     unirest.get("https://trackapi.nutritionix.com/v2/search/instant?query=" + searchTerm)
         .header("Accept", "application/json")
         .header("Content-Type", "application/json")
-        .header("x-app-id", "3695a268")
-        .header("x-app-key", "684be36e7fdca1a4cbeac908344a2cb3")
+        .header("x-app-id", "91d999d6")
+        .header("x-app-key", "90c9640d86c64ef7df97b0c16d73a27c")
+        .end(function (result) {
+            console.log(result.status, result.headers, result.body);
+            //success scenario
+            if (result.ok) {
+                emitter.emit('end', result.body);
+            }
+            //failure scenario
+            else {
+                emitter.emit('error', result.code);
+            }
+        });
+
+    return emitter;
+};
+//GET https://trackapi.nutritionix.com/v2/search/item?nix_item_id=513fc9e73fe3ffd40300109f
+
+//HEADERS required:
+//
+//x-app-id
+//x-app-key
+//Response body:
+const getFromNutritionixNutrition = function (searchTerm) {
+    let emitter = new events.EventEmitter();
+    //console.log("inside getFromActive function");
+    // https://trackapi.nutritionix.com/v2/search/item?nix_item_id=513fc9e73fe3ffd40300109f
+    unirest.get("https://trackapi.nutritionix.com/v2/search/item?nix_item_id=" + searchTerm)
+        .header("Accept", "application/json")
+        .header("Content-Type", "application/json")
+        .header("x-app-id", "91d999d6")
+        .header("x-app-key", "90c9640d86c64ef7df97b0c16d73a27c")
         .end(function (result) {
             console.log(result.status, result.headers, result.body);
             //success scenario
@@ -125,7 +155,7 @@ app.use('*', (req, res, next) => {
     next(); // <-- important!
 });
 
-app.get('/ingredient/:name', function (req, res) {
+app.get('/ingredient/:name', function (req, res) { //make the name more relevant (ingrediant)
 
     //    external api function call and response
 
@@ -138,6 +168,23 @@ app.get('/ingredient/:name', function (req, res) {
 
     //error handling
     searchReq.on('error', function (code) {
+        res.sendStatus(code);
+    });
+
+});
+app.get('/nix/:number', function (req, res) { //make the name more robust (nix)
+
+    //    external api function call and response
+
+    var nutritionReq = getFromNutritionixNutrition(req.params.number);
+
+    //get the data from the first api call
+    nutritionReq.on('end', function (item) {
+        res.json(item);
+    });
+
+    //error handling
+    nutritionReq.on('error', function (code) {
         res.sendStatus(code);
     });
 
@@ -243,107 +290,7 @@ app.post('/users/login', function (req, res) {
 });
 
 
-// -------------ACHIEVEMENT ENDPOINTS------------------------------------------------
-// POST -----------------------------------------
-// creating a new achievement
-app.post('/new/create', (req, res) => {
-    let achieveWhat = req.body.achieveWhat;
-    achieveWhat = achieveWhat.trim();
-    let achieveHow = req.body.achieveHow;
-    let achieveWhy = req.body.achieveWhy;
-    let achieveWhen = req.body.achieveWhen;
-    let user = req.body.user;
 
-    Achievement.create({
-        user,
-        achieveWhat,
-        achieveHow,
-        achieveWhen,
-        achieveWhy
-    }, (err, item) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        if (item) {
-            console.log(`Achievement \`${achieveWhat}\` added.`);
-            return res.json(item);
-        }
-    });
-});
-
-// PUT --------------------------------------
-app.put('/achievement/:id', function (req, res) {
-    let toUpdate = {};
-    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy'];
-    updateableFields.forEach(function (field) {
-        if (field in req.body) {
-            toUpdate[field] = req.body[field];
-        }
-    });
-    Achievement
-        .findByIdAndUpdate(req.params.id, {
-            $set: toUpdate
-        }).exec().then(function (achievement) {
-            return res.status(204).end();
-        }).catch(function (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        });
-});
-
-// GET ------------------------------------
-// accessing all of a user's achievements
-app.get('/achievements/:user', function (req, res) {
-    Achievement
-        .find()
-        .sort('achieveWhen')
-        .then(function (achievements) {
-            let achievementOutput = [];
-            achievements.map(function (achievement) {
-                if (achievement.user == req.params.user) {
-                    achievementOutput.push(achievement);
-                }
-            });
-            res.json({
-                achievementOutput
-            });
-        })
-        .catch(function (err) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal server error'
-            });
-        });
-});
-
-// accessing a single achievement by id
-app.get('/achievement/:id', function (req, res) {
-    Achievement
-        .findById(req.params.id).exec().then(function (achievement) {
-            return res.json(achievement);
-        })
-        .catch(function (achievements) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        });
-});
-
-// DELETE ----------------------------------------
-// deleting an achievement by id
-app.delete('/achievement/:id', function (req, res) {
-    Achievement.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
-        return res.status(204).end();
-    }).catch(function (err) {
-        return res.status(500).json({
-            message: 'Internal Server Error'
-        });
-    });
-});
 
 //// set a cookie
 //app.use(function (req, res, next) {
@@ -368,11 +315,11 @@ app.delete('/achievement/:id', function (req, res) {
 //
 //// MISC ------------------------------------------
 //// catch-all endpoint if client makes request to non-existent endpoint
-//app.use('*', (req, res) => {
-//    res.status(404).json({
-//        message: 'Not Found'
-//    });
-//});
+app.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'Not Found'
+    });
+});
 
 exports.app = app;
 exports.runServer = runServer;

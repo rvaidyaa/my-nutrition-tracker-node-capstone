@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    <header>
+    <header class='title-header'>
         <h1>My nutritional Tracker!</h1>
     </header>
-    <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with nutrition in mind. It is for busy professionals who eat at restaurants and want to track their nutrients.
-    </div>
     <main class="landing">
-        <form id='form'>
-            <a href="url" class="user-input">Create Account</a>
-            <input type='text' placeholder="Username" class='user-input' id='login-username-form' value='testuser'>
-            <input type='password' placeholder='Password' class='user-input' id='login-password-form' value='123'>
+        <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with nutrition in mind. It is for busy professionals who eat at restaurants and want to track their nutrients.
+        </div>
+        <form id='login-form'>
+            <a class="user-input" id='js-create-account'>Create Account</a>
+            <input type='text' class='user-input' id='login-username-form' value='testuser'>
+            <input type='password' class='user-input' id='login-password-form' value='123'>
             <input type="submit" class="user-input" value='Login'>
         </form>
     </main>
@@ -35,7 +35,7 @@
     <main class="add-recipe" id='js-add-recipe'>
         <h1>Add a Meal</h1>
         <form action="" class="new-recipe">
-            <input type='text' placeholder="Search Food item" class='ingrediant-input' id='js-search-field'>
+            <input type='text' placeholder="Search Food item" class='ingrediant-input' id='js-search-field' value='Big Mac'>
             <input type="submit" class="user-input" value='Search' id='js-search-ingrediant'>
         </form>
         <div class="api-results">Closest Matching</div>
@@ -46,16 +46,86 @@
             <input type='text' placeholder="Enter Recipe Name" class='recipe-input' id='js-recipe-name'>
         </form>
 -->
-        <div class="recipe-name">Ingrediants Added</div>
-        <span class="added-foods">Tomatoes Small</span><span class="added-grams">123g</span><br>
-        <span class="added-foods">Onions</span><span class="added-grams">55g</span><br>
-        <span class="added-foods">Whole Chicken</span><span class="added-grams">77g</span><br>
-        <form action="" class="save">
-            <input type="submit" class="add-recipes" value='Save/View Nutrient Profile' id='js-save-nutrient-profile'>
+    </main>
+    <main class="nutrient-profile">
+        <h1 class='current-food-item'></h1>
+        <form action="">
+            <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
         </form>
+        <div role="weekly-totals">
+
+            <span class='totals'>Nutrient</span>
+            <span class='totals'>Total</span>
+            <span class='totals'>%/Daily</span>
+        </div>
+        <div class="three-colums">
+            <span class='weeklys'>Kcal</span><br>
+            <span class='weeklys'>Carb</span><br>
+            <span class='weeklys'>Sugar</span><br>
+            <span class='weeklys'>Fiber</span><br>
+            <span class='weeklys'>Fat</span><br>
+            <span class='weeklys'>Protein</span><br>
+            <span class='weeklys'>Sodium</span><br>
+            <span class='weeklys'>Potassium</span><br>
+
+        </div>
+        <div class="three-colums">
+            <span class='weeklys' id='js-kcal'></span><br>
+            <span class='weeklys' id='js-carb'></span><br>
+            <span class='weeklys' id='js-sugar'></span><br>
+            <span class='weeklys' id='js-fiber'></span><br>
+            <span class='weeklys' id='js-fat'></span><br>
+            <span class='weeklys' id='js-protein'></span><br>
+            <span class='weeklys' id='js-sodium'></span><br>
+            <span class='weeklys' id='js-potassium'></span><br>
+
+        </div>
+        <div class="three-colums">
+            <span class='weeklys'>85</span><br>
+            <span class='weeklys'>98</span><br>
+            <span class='weeklys'>66</span><br>
+            <span class='weeklys'>55</span><br>
+            <span class='weeklys'>62</span><br>
+            <span class='weeklys'>15</span><br>
+            <span class='weeklys'>85</span><br>
+            <span class='weeklys'>112</span><br>
+
+        </div>
+        <div role='macro-nutrient-spread' class='macro-div'>
+            <span class='macro-spread'>Protein</span>
+            <span class='macro-spread'>Fat</span>
+            <span class='macro-spread'>Carb</span>
+            <span class='macro-spread'>Sugar</span>
+        </div>
+        <span class='macro-spread'>20%</span>
+        <span class='macro-spread'>60%</span>
+        <span class='macro-spread'>15%</span>
+        <span class='macro-spread'>5%</span>
     </main>
     <main class="weekly">
-        <h1>Weekly Macro Micro Totals</h1>
+        <h1>Total Meal Nutrition</h1>
+        <form action="" class="matching-results">
+            <div role="daily totals">
+                <div class="dropdown">
+                    <button class="dropbtn">Select Meal</button>
+                    <div class="dropdown-content">
+                        <a href="#">Breakfast</a>
+                        <a href="#">Lunch</a>
+                        <a href="#">Dinner</a>
+                    </div>
+
+                </div>
+            </div>
+            <section class="two-columns">
+                <form action="">
+                    <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
+                </form>
+                <form action="">
+                    <input type="submit" class="add-item" id='js-save-meal' value='Save Meal'>
+                </form>
+            </section>
+            <!-- Change from dropdown to input for grams-->
+        </form>
         <div role="weekly-totals">
             <span class='totals'>Nutrient</span>
             <span class='totals'>Total</span>
@@ -126,12 +196,12 @@
         <span class='macro-spread'>5%</span>
     </main>
     <main class="saved-recipes">
-        <h1>Calendar View<br> Click to view/add
+        <h1>Daily View<br>
         </h1>
         <button class="results" id=js-add-meal>Add New Meal</button>
         <div class="save">
             <p class="stored-recipes">
-                <span><a href="" class="title">Chicken Noodle Soup</a></span><br>
+                <span><a href="" class="title">Breakfast</a></span><br>
                 <span class="info">1600 Kcal total</span><br>
                 <span class="macro-spread">P</span>
                 <span class="macro-spread">F</span>
@@ -143,7 +213,7 @@
                 <span class="macro-spread">10% </span>
             </p>
             <p class="stored-recipes">
-                <span><a href="" class="title">Chicken Noodle Soup</a></span><br>
+                <span><a href="" class="title">Lunch</a></span><br>
                 <span class="info">1600 Kcal total</span><br>
                 <span class="macro-spread">P</span>
                 <span class="macro-spread">F</span>
@@ -155,7 +225,7 @@
                 <span class="macro-spread">10% </span>
             </p>
             <p class="stored-recipes">
-                <span><a href="" class="title">Chicken Noodle Soup</a></span><br>
+                <span><a href="" class="title">Dinner</a></span><br>
                 <span class="info">1600 Kcal total</span><br>
                 <span class="macro-spread">P</span>
                 <span class="macro-spread">F</span>
@@ -166,200 +236,24 @@
                 <span class="macro-spread">15% </span>
                 <span class="macro-spread">10% </span>
             </p>
-        </div>
-        <div class="save">
-            <p class="stored-recipes">
-                <span><a href="" class="title">Chicken Noodle Soup</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span>
-            </p>
-            <p class="stored-recipes">
-                <span><a href="" class="title">Chicken Noodle Soup</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span>
-            </p>
-            <p class="stored-recipes"><span><a href="" class="title">Chicken Noodle Soup</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span></p>
-        </div>
-        <div class="save">
-            <p class="stored-recipes"><span><a href="" class="title">Chicken Noodle Soup</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span></p>
-            <p class="stored-recipes"><span><a href="" class="title">Chicken Noodle Soup</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span></p>
-            <p class="stored-recipes"><span><a href="" class="title">Chicken Noodle Soup</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span></p>
         </div>
     </main>
-    <main class="nutrient-profile">
-        <h1>My Current Meal</h1>
-        <form action="" class="matching-results">
-            <div role="daily totals">
-                <div class="dropdown">
-                    <button class="dropbtn">Select Day</button>
-                    <div class="dropdown-content">
-                        <a href="#">Monday 1/17</a>
-                        <a href="#">Tuesday 1/17</a>
-                        <a href="#">Wednesday 1/17</a>
-                        <a href="#">Thursday 1/17</a>
-                    </div>
-                </div>
-            </div>
-            <section class="two-columns">
-                <button class="results">Back to Saved</button>
-                <form action="">
-                    <input type="submit" class="add-item" value='Add Meal'>
-                    <input type='percent' placeholder='Enter % Eaten' class='add-percent'>
-                </form>
-
-            </section>
-            <!-- Change from dropdown to input for grams-->
-        </form>
-        <div role="weekly-totals">
-            <span class='totals'>Nutrient</span>
-            <span class='totals'>Total</span>
-            <span class='totals'>%/Daily</span>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys'>Kcal</span><br>
-            <span class='weeklys'>Carb</span><br>
-            <span class='weeklys'>Sugar</span><br>
-            <span class='weeklys'>Fiber</span><br>
-            <span class='weeklys'>Fat</span><br>
-            <span class='weeklys'>Protein</span><br>
-            <span class='weeklys'>Sodium</span><br>
-            <span class='weeklys'>Potassium</span><br>
-            <span class='weeklys'>Magnesium</span><br>
-            <span class='weeklys'>Calcium</span>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys'>13500 Kcal</span><br>
-            <span class='weeklys'>1200 G</span><br>
-            <span class='weeklys'>100 G</span><br>
-            <span class='weeklys'>100 G</span><br>
-            <span class='weeklys'>2000 G</span><br>
-            <span class='weeklys'>1500 G</span><br>
-            <span class='weeklys'>10000 MG</span><br>
-            <span class='weeklys'>6000 MG</span>
-            <span class='weeklys'>600 MG</span><br>
-            <span class='weeklys'>1000 MG</span>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys'>85</span><br>
-            <span class='weeklys'>98</span><br>
-            <span class='weeklys'>66</span><br>
-            <span class='weeklys'>55</span><br>
-            <span class='weeklys'>62</span><br>
-            <span class='weeklys'>15</span><br>
-            <span class='weeklys'>85</span><br>
-            <span class='weeklys'>112</span><br>
-            <span class='weeklys'>137</span><br>
-            <span class='weeklys'>51</span>
-        </div>
-        <div role='macro-nutrient-spread' class='macro-div'>
-            <span class='macro-spread'>Protein</span>
-            <span class='macro-spread'>Fat</span>
-            <span class='macro-spread'>Carb</span>
-            <span class='macro-spread'>Sugar</span>
-        </div>
-        <span class='macro-spread'>20%</span>
-        <span class='macro-spread'>60%</span>
-        <span class='macro-spread'>15%</span>
-        <span class='macro-spread'>5%</span>
-
-    </main>
-    <main class="main-page">
-        <h1>Welcome Ronald</h1>
+    <main class="main-page" id='js-main-page'>
+        <h1 id="js-user-welcome">Welcome Ronald</h1>
         <div role="weekly-totals">
             <button class='results' id='js-logout-button'>Logout</button>
-            <button class='results' id='js-weekly-tracker'>Weekly Tracker</button>
+            <button class='results' id='js-weekly-tracker'>Current Meal</button>
             <button class='results' id='js-daily-tracker'>Daily Tracker</button>
-
-        </div>
-        <div role="daily totals">
-            <div class="dropdown">
-                <button class="dropbtn">Select Day</button>
-                <div class="dropdown-content">
-                    <a href="#">Monday 1/17</a>
-                    <a href="#">Tuesday 1/17</a>
-                    <a href="#">Wednesday 1/17</a>
-                    <a href="#">Thursday 1/17</a>
-                </div>
-            </div>
-
         </div>
         <div class="two-columns">
-            <button class='results' id='js-saved-meals'>Add Meal</button><br>
-            <p class="stored-recipes"><span><a href="" class="title">Steak and Mushrooms</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span><br>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span></p><br>
-            <p class="stored-recipes"><span><a href="" class="title">Cereal</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span><br>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span></p><br>
         </div>
 
     </main>
     <main class="daily">
         <h1>Daily Micro Macro Nutrient Total</h1>
+        <form action="">
+            <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
+        </form>
         <div role="daily totals">
             <span class='totals'>Nutrient</span>
             <span class='totals'>Total</span>
