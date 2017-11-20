@@ -1,4 +1,5 @@
 const User = require('./models/users');
+const foodLog = require('./models/food-log');
 const online = require('./models/online');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -191,6 +192,25 @@ app.get('/nix/:number', function (req, res) { //make the name more robust (nix)
 });
 
 
+//GET
+app.get('/get-requested-food-items/', function (req, res) { //make the name more robust (nix)
+
+    foodLog
+        .find()
+        .then(function (foodLogResults) {
+            console.log(foodLogResults);
+            res.json({
+                foodLogResults
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
 
 
 // POST -----------------------------------
@@ -261,26 +281,27 @@ app.post('/users/login', function (req, res) {
                         });
                     } else {
 
-
-                        online.create({
-                            username: req.body.username,
-                            unixtime: logInTime,
-                        }, (err, item) => {
-                            if (err) {
-                                return res.status(500).json({
-                                    message: 'Internal Server Error'
-                                });
-                            }
-                            if (item) {
-                                let logInTime = new Date().getTime() / 1000;
-                                loggedInUser = req.body.username;
-                                res.cookie('USER_LOGGEDIN_COOKIE', loggedInUser, {
-                                    maxAge: 900000,
-                                    httpOnly: true
-                                });
-                                console.log("User logged in: " + loggedInUser + ' at ' + logInTime);
-                            }
-                        });
+                        //                        let logInTime = new Date().getTime() / 1000;
+                        //                        console.log("User logged in: " + req.body.username + ' at ' + logInTime);
+                        //
+                        //                        online.create({
+                        //                            username: req.body.username,
+                        //                            unixtime: logInTime,
+                        //                        }, (err, item) => {
+                        //                            if (err) {
+                        //                                return res.status(500).json({
+                        //                                    message: 'Internal Server Error'
+                        //                                });
+                        //                            }
+                        //                            if (item) {
+                        //                                loggedInUser = req.body.username;
+                        //                                res.cookie('USER_LOGGEDIN_COOKIE', loggedInUser, {
+                        //                                    maxAge: 900000,
+                        //                                    httpOnly: true
+                        //                                });
+                        //                                console.log("User logged in: " + loggedInUser + ' at ' + logInTime);
+                        //                            }
+                        //                        });
 
                         return res.json(loggedInUser);
                     }
@@ -289,6 +310,54 @@ app.post('/users/login', function (req, res) {
         });
 });
 
+//Food Log Endpoints
+
+app.post('/food-log/food-item', (req, res) => {
+    let name = req.body.name;
+    let calories = req.body.calories;
+    let fiber = req.body.fiber;
+    let potassium = req.body.potassium;
+    let totalFat = req.body.totalFat;
+    let carbs = req.body.carbs;
+    let protein = req.body.protein;
+    let sugar = req.body.sugar;
+    let sodium = req.body.sodium;
+    let satFat = req.body.satFat;
+
+    console.log(name)
+    console.log(calories);
+    console.log(fiber);
+    console.log(potassium);
+    console.log(totalFat);
+    console.log(carbs);
+    console.log(protein);
+    console.log(sugar);
+    console.log(sodium);
+    console.log(satFat);
+
+    foodLog.create({
+        name,
+        calories,
+        fiber,
+        potassium,
+        totalFat,
+        carbs,
+        protein,
+        sugar,
+        sodium,
+        satFat
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            console.log(`Food Item \`${name}\` added.`);
+            return res.json(item);
+        }
+    });
+});
 
 
 

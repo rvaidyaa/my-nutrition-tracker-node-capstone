@@ -23,6 +23,12 @@ a {
     text-decoration: none;
 }
 
+ul,
+ol,
+{
+    list-style: none;
+}
+
 header {
     text-align: center;
     color: silver;
@@ -301,6 +307,17 @@ form {
     color: greenyellow;
 }
 
+.selected-items {
+    background-image: url(/media/transparent.jpg);
+    width: 50%;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .5rem;
+    border-radius: 0.5rem;
+    color: silver;
+}
+
 .recipe-input {
     margin: 5px;
     font-size: 16px;
@@ -501,6 +518,12 @@ footer {
 
     .catch {
         width: 100%
+    }
+
+    .selected-items {
+        background-image: url(/media/transparent.jpg);
+        width: 80%;
+        font-size: 12px;
     }
 
     .signup {

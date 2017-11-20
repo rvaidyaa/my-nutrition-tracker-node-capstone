@@ -40,6 +40,7 @@
         </form>
         <div class="api-results">Closest Matching</div>
 
+
         <!--
         <div class="recipe-name">Recipe name</div>
         <form action="" class="recipe">
@@ -81,29 +82,32 @@
 
         </div>
         <div class="three-colums">
-            <span class='weeklys'>85</span><br>
-            <span class='weeklys'>98</span><br>
-            <span class='weeklys'>66</span><br>
-            <span class='weeklys'>55</span><br>
-            <span class='weeklys'>62</span><br>
-            <span class='weeklys'>15</span><br>
-            <span class='weeklys'>85</span><br>
-            <span class='weeklys'>112</span><br>
+            <span class='weeklys' id='js-kcal-p'>85</span><br>
+            <span class='weeklys' id='js-carb-p'>98</span><br>
+            <span class='weeklys' id='js-sugar-p'>66</span><br>
+            <span class='weeklys' id='js-fiber-p'>55</span><br>
+            <span class='weeklys' id='js-fat-p'>62</span><br>
+            <span class='weeklys' id='js-protein-p'>15</span><br>
+            <span class='weeklys' id='js-sodium-p'>85</span><br>
+            <span class='weeklys' id='js-potassium-p'>112</span><br>
 
         </div>
         <div role='macro-nutrient-spread' class='macro-div'>
             <span class='macro-spread'>Protein</span>
             <span class='macro-spread'>Fat</span>
             <span class='macro-spread'>Carb</span>
-            <span class='macro-spread'>Sugar</span>
+
         </div>
-        <span class='macro-spread'>20%</span>
-        <span class='macro-spread'>60%</span>
-        <span class='macro-spread'>15%</span>
-        <span class='macro-spread'>5%</span>
+        <span class='macro-spread' id='js-macro-protein'>20%</span>
+        <span class='macro-spread' id='js-macro-fat'>60%</span>
+        <span class='macro-spread' id='js-macro-carb'>15%</span>
+
     </main>
     <main class="weekly">
         <h1>Total Meal Nutrition</h1>
+        <div class='selected-items'>
+            <ul></ul>
+        </div>
         <form action="" class="matching-results">
             <div role="daily totals">
                 <div class="dropdown">
@@ -113,15 +117,12 @@
                         <a href="#">Lunch</a>
                         <a href="#">Dinner</a>
                     </div>
-
+                    <input type="submit" class="add-item" id='js-save-meal' value='Save Meal'>
                 </div>
             </div>
             <section class="two-columns">
                 <form action="">
                     <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
-                </form>
-                <form action="">
-                    <input type="submit" class="add-item" id='js-save-meal' value='Save Meal'>
                 </form>
             </section>
             <!-- Change from dropdown to input for grams-->
@@ -129,7 +130,6 @@
         <div role="weekly-totals">
             <span class='totals'>Nutrient</span>
             <span class='totals'>Total</span>
-            <span class='totals'>Average/Day</span>
             <span class='totals'>%/Daily</span>
         </div>
         <div class="three-colums">
@@ -137,63 +137,43 @@
             <span class='weeklys'>Carb</span><br>
             <span class='weeklys'>Sugar</span><br>
             <span class='weeklys'>Fiber</span><br>
-
             <span class='weeklys'>Fat</span><br>
             <span class='weeklys'>Protein</span><br>
             <span class='weeklys'>Sodium</span><br>
             <span class='weeklys'>Potassium</span><br>
-            <span class='weeklys'>Magnesium</span><br>
-            <span class='weeklys'>Calcium</span>
+
         </div>
         <div class="three-colums">
-            <span class='weeklys'>13500 Kcal</span><br>
-            <span class='weeklys'>1200 G</span><br>
-            <span class='weeklys'>100 G</span><br>
-            <span class='weeklys'>100 G</span><br>
-
-            <span class='weeklys'>2000 G</span><br>
-            <span class='weeklys'>1500 G</span><br>
-            <span class='weeklys'>10000 MG</span><br>
-            <span class='weeklys'>6000 MG</span>
-            <span class='weeklys'>600 MG</span><br>
-            <span class='weeklys'>1000 MG</span>
+            <span class='weeklys' id='js-total-kcal'>13500 Kcal</span><br>
+            <span class='weeklys' id='js-total-carb'>1200 G</span><br>
+            <span class='weeklys' id='js-total-sugar'>100 G</span><br>
+            <span class='weeklys' id='js-total-fiber'>100 G</span><br>
+            <span class='weeklys' id='js-total-fat'>2000 G</span><br>
+            <span class='weeklys' id='js-total-protein'>1500 G</span><br>
+            <span class='weeklys' id='js-total-sodium'>10000 MG</span><br>
+            <span class='weeklys' id='js-total-potassium'>6000 MG</span>
         </div>
         <div class="three-colums">
-            <span class='weeklys'>1600 Kcal</span><br>
-            <span class='weeklys'>180 G</span><br>
-            <span class='weeklys'>18 G</span><br>
-            <span class='weeklys'>15 G</span><br>
+            <span class='weeklys' id='js-percent-kcal'>85</span><br>
+            <span class='weeklys' id='js-percent-carb'>98</span><br>
+            <span class='weeklys' id='js-percent-sugar'>66</span><br>
+            <span class='weeklys' id='js-percent-fiber'>55</span><br>
+            <span class='weeklys' id='js-percent-fat'>62</span><br>
+            <span class='weeklys' id='js-percent-protein'>15</span><br>
+            <span class='weeklys' id='js-percent-sodium'>85</span><br>
+            <span class='weeklys' id='js-percent-potassium'>112</span><br>
 
-            <span class='weeklys'>225 G</span><br>
-            <span class='weeklys'>200 G</span><br>
-            <span class='weeklys'>1500 MG</span><br>
-            <span class='weeklys'>800 MG</span><br>
-            <span class='weeklys'>Magnesium</span><br>
-            <span class='weeklys'>Calcium</span>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys'>85</span><br>
-            <span class='weeklys'>98</span><br>
-            <span class='weeklys'>66</span><br>
-            <span class='weeklys'>55</span><br>
-
-            <span class='weeklys'>62</span><br>
-            <span class='weeklys'>15</span><br>
-            <span class='weeklys'>85</span><br>
-            <span class='weeklys'>112</span><br>
-            <span class='weeklys'>137</span><br>
-            <span class='weeklys'>51</span>
         </div>
         <div role='macro-nutrient-spread' class='macro-div'>
             <span class='macro-spread'>Protein</span>
             <span class='macro-spread'>Fat</span>
             <span class='macro-spread'>Carb</span>
-            <span class='macro-spread'>Sugar</span>
+
         </div>
-        <span class='macro-spread'>20%</span>
-        <span class='macro-spread'>60%</span>
-        <span class='macro-spread'>15%</span>
-        <span class='macro-spread'>5%</span>
+        <span class='macro-spread' id='js-macro-protein-total'>20%</span>
+        <span class='macro-spread' id='js-macro-fat-total'>60%</span>
+        <span class='macro-spread' id='js-macro-carb-total'>15%</span>
+
     </main>
     <main class="saved-recipes">
         <h1>Daily View<br>
