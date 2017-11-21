@@ -111,12 +111,12 @@
         <form action="" class="matching-results">
             <div role="daily totals">
                 <div class="dropdown">
-                    <button class="dropbtn">Select Meal</button>
-                    <div class="dropdown-content">
-                        <a href="#">Breakfast</a>
-                        <a href="#">Lunch</a>
-                        <a href="#">Dinner</a>
-                    </div>
+                    <input type="hidden" class="allocateItemToMeal" value="">
+                    <select class="dropdown-content dropbtn" id='js-dropdown-value'>
+                        <option  value='breakfast'>Breakfast</option>
+                        <option  value='lunch'>Lunch</option>
+                        <option  value='dinner'>Dinner</option>
+                    </select>
                     <input type="submit" class="add-item" id='js-save-meal' value='Save Meal'>
                 </div>
             </div>
@@ -182,39 +182,39 @@
         <div class="save">
             <p class="stored-recipes">
                 <span><a href="" class="title">Breakfast</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span>
+                <span class="info" id='js-breakfast-kcal'>1600 Kcal total</span><br>
+                <span class="macro-spread" id='js-breakfast-protein'>P</span>
+                <span class="macro-spread" id='js-breakfast-fat'>F</span>
+                <span class="macro-spread" id='js-breakfast-carb'>C</span>
+                <span class="macro-spread" id='js-breakfast-sugar'>S</span>
+                <span class="macro-spread" id='js-breakfast-protein-macro'>25% </span>
+                <span class="macro-spread" id='js-breakfast-fat-macro'>50% </span>
+                <span class="macro-spread" id='js-breakfast-carb-macro'>15% </span>
+                <span class="macro-spread" id='js-breakfast-sugar-macro'>10% </span>
             </p>
             <p class="stored-recipes">
-                <span><a href="" class="title">Lunch</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span>
+                <span><a href="" class="title" >Lunch</a></span><br>
+                <span class="info" id='js-lunch-kcal'>1600 Kcal total</span><br>
+                <span class="macro-spread" id='js-lunch-protein'>P</span>
+                <span class="macro-spread" id='js-lunch-fat'>F</span>
+                <span class="macro-spread" id='js-lunch-carb'>C</span>
+                <span class="macro-spread" id='js-lunch-sugar'>S</span>
+                <span class="macro-spread" id='js-lunch-protein-macro'>25% </span>
+                <span class="macro-spread" id='js-lunch-fat-macro'>50% </span>
+                <span class="macro-spread" id='js-lunch-carb-macro'>15% </span>
+                <span class="macro-spread" id='js-lunch-sugar-macro'>10% </span>
             </p>
             <p class="stored-recipes">
                 <span><a href="" class="title">Dinner</a></span><br>
-                <span class="info">1600 Kcal total</span><br>
-                <span class="macro-spread">P</span>
-                <span class="macro-spread">F</span>
-                <span class="macro-spread">C</span>
-                <span class="macro-spread">S</span>
-                <span class="macro-spread">25% </span>
-                <span class="macro-spread">50% </span>
-                <span class="macro-spread">15% </span>
-                <span class="macro-spread">10% </span>
+                <span class="info" id='js-dinner-kcal'>1600 Kcal total</span><br>
+                <span class="macro-spread" id='js-dinner-protein'>P</span>
+                <span class="macro-spread" id='js-dinner-fat'>F</span>
+                <span class="macro-spread" id='js-dinner-carb'>C</span>
+                <span class="macro-spread" id='js-dinner-sugar'>S</span>
+                <span class="macro-spread" id='js-dinner-protein-macro'>25% </span>
+                <span class="macro-spread" id='js-dinner-fat-macro'>50% </span>
+                <span class="macro-spread" id='js-dinner-carb-macro'>15% </span>
+                <span class="macro-spread" id='js-dinner-sugar-macro'>10% </span>
             </p>
         </div>
     </main>

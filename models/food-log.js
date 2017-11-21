@@ -42,6 +42,10 @@ const foodLogSchema = new mongoose.Schema({
     satFat: {
         type: String,
         required: false
+    },
+    meal: {
+        type: String,
+        required: false
     }
 });
 

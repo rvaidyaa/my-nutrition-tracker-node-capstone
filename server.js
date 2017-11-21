@@ -323,17 +323,18 @@ app.post('/food-log/food-item', (req, res) => {
     let sugar = req.body.sugar;
     let sodium = req.body.sodium;
     let satFat = req.body.satFat;
+    let meal = "";
 
-    console.log(name)
-    console.log(calories);
-    console.log(fiber);
-    console.log(potassium);
-    console.log(totalFat);
-    console.log(carbs);
-    console.log(protein);
-    console.log(sugar);
-    console.log(sodium);
-    console.log(satFat);
+//    console.log(name)
+//    console.log(calories);
+//    console.log(fiber);
+//    console.log(potassium);
+//    console.log(totalFat);
+//    console.log(carbs);
+//    console.log(protein);
+//    console.log(sugar);
+//    console.log(sodium);
+//    console.log(satFat);
 
     foodLog.create({
         name,
@@ -345,7 +346,8 @@ app.post('/food-log/food-item', (req, res) => {
         protein,
         sugar,
         sodium,
-        satFat
+        satFat,
+        meal
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -359,6 +361,61 @@ app.post('/food-log/food-item', (req, res) => {
     });
 });
 
+
+app.put('/allocate-item-to-meal', function (req, res) {
+
+    let mealTime = req.body.mealTime;
+    let itemsId = req.body.itemsId;
+
+    let itemsIdObjt = itemsId.split(",");
+    console.log(itemsIdObjt);
+
+    itemsIdObjt.forEach(function (value, key) {
+        console.log(key, value);
+        if (value != "") {
+            foodLog
+                .findByIdAndUpdate(value, {
+                    $set: {
+                        meal: mealTime
+                    }
+                }).exec().then(function (foodLog) {
+                    return res.status(204).end();
+                }).catch(function (err) {
+                    return res.status(500).json({
+                        message: 'Internal Server Error'
+                    });
+                });
+        }
+    });
+
+    //    let toUpdate = {};
+    //    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy'];
+    //    updateableFields.forEach(function (field) {
+    //        if (field in req.body) {
+    //            toUpdate[field] = req.body[field];
+    //        }
+    //    });
+    //    Achievement
+    //        .findByIdAndUpdate(req.params.id, {
+    //            $set: toUpdate
+    //        }).exec().then(function (achievement) {
+    //            return res.status(204).end();
+    //        }).catch(function (err) {
+    //            return res.status(500).json({
+    //                message: 'Internal Server Error'
+    //            });
+    //        });
+});
+
+app.delete('/nix/:number', function (req, res) { //make better name
+    foodLog.findByIdAndRemove(req.params.number).exec().then(function (foodLog) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
 
 
 //// set a cookie

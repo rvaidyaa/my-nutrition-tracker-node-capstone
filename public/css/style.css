@@ -257,7 +257,6 @@ form {
 
 .dropdown-content {
     display: none;
-    position: absolute;
     background-color: greenyellow;
     min-width: 160px;
     border-radius: 0.5rem;
@@ -275,9 +274,11 @@ form {
     margin: 1px;
 }
 
+/*
 .dropdown:hover .dropdown-content {
     display: block;
 }
+*/
 
 .dropbtn {
     display: inline-block;
