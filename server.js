@@ -280,29 +280,8 @@ app.post('/users/login', function (req, res) {
                             message: "Not found"
                         });
                     } else {
-
-                        //                        let logInTime = new Date().getTime() / 1000;
-                        //                        console.log("User logged in: " + req.body.username + ' at ' + logInTime);
-                        //
-                        //                        online.create({
-                        //                            username: req.body.username,
-                        //                            unixtime: logInTime,
-                        //                        }, (err, item) => {
-                        //                            if (err) {
-                        //                                return res.status(500).json({
-                        //                                    message: 'Internal Server Error'
-                        //                                });
-                        //                            }
-                        //                            if (item) {
-                        //                                loggedInUser = req.body.username;
-                        //                                res.cookie('USER_LOGGEDIN_COOKIE', loggedInUser, {
-                        //                                    maxAge: 900000,
-                        //                                    httpOnly: true
-                        //                                });
-                        //                                console.log("User logged in: " + loggedInUser + ' at ' + logInTime);
-                        //                            }
-                        //                        });
-
+                        let loggedInUser = req.body.username;
+                        console.log(loggedInUser);
                         return res.json(loggedInUser);
                     }
                 });
@@ -324,17 +303,18 @@ app.post('/food-log/food-item', (req, res) => {
     let sodium = req.body.sodium;
     let satFat = req.body.satFat;
     let meal = "";
+    let username = req.body.username;
 
-//    console.log(name)
-//    console.log(calories);
-//    console.log(fiber);
-//    console.log(potassium);
-//    console.log(totalFat);
-//    console.log(carbs);
-//    console.log(protein);
-//    console.log(sugar);
-//    console.log(sodium);
-//    console.log(satFat);
+    //    console.log(name)
+    //    console.log(calories);
+    //    console.log(fiber);
+    //    console.log(potassium);
+    //    console.log(totalFat);
+    //    console.log(carbs);
+    //    console.log(protein);
+    //    console.log(sugar);
+    //    console.log(sodium);
+    //    console.log(satFat);
 
     foodLog.create({
         name,
@@ -347,7 +327,8 @@ app.post('/food-log/food-item', (req, res) => {
         sugar,
         sodium,
         satFat,
-        meal
+        meal,
+        username
     }, (err, item) => {
         if (err) {
             return res.status(500).json({

@@ -2,14 +2,13 @@
 
 var loggedInUser = "";
 
-
 function checkLogedInUser(nowUnixTime, loggedInUser) {
     console.log("current logged in user = ", loggedInUser);
 }
 
 function registerUser(username, password) {
-    console.log('inside fn registerUser');
-    console.log(username, password);
+    //    console.log('inside fn registerUser');
+    //    console.log(username, password);
 
     const unamePwObject = {
         username: username,
@@ -24,7 +23,7 @@ function registerUser(username, password) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result);
+            //            console.log(result);
             alert('Welcome to my Nutrition tracker, you may now sign in from the home page!');
             // go to main signin page
             //            backToHomePage();
@@ -41,12 +40,12 @@ function registerUser(username, password) {
 }
 
 function loginUser(inputUname, inputPw) {
-    console.log('inside fn loginUser')
+    //    console.log('inside fn loginUser')
     const unamePwObject = {
         username: inputUname,
         password: inputPw
     };
-    console.log(unamePwObject);
+    //    console.log(unamePwObject);
     $.ajax({
             type: "POST",
             url: "/users/login",
@@ -55,11 +54,8 @@ function loginUser(inputUname, inputPw) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result);
-            loggedInUser = result.username;
-            // show the signout link in header as soon as user is signed in
-            // go to login page
-
+            loggedInUser = result;
+            $('#js-user-welcome').html('Welcome ' + result);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -77,8 +73,8 @@ function ajaxNutritionSearch(searchTerm) {
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            console.log(dataOutput);
-            console.log(dataOutput.branded[0].brand_name);
+            //            console.log(dataOutput);
+            //            console.log(dataOutput.branded[0].brand_name);
 
 
 
@@ -91,13 +87,7 @@ function ajaxNutritionSearch(searchTerm) {
             console.log(errorThrown);
         });
 }
-//GET https://trackapi.nutritionix.com/v2/search/item?nix_item_id=513fc9e73fe3ffd40300109f
 
-//HEADERS required:
-//
-//x-app-id
-//x-app-key
-//Response body:
 function ajaxNutritionFind(nixId) {
 
     $.ajax({
@@ -106,7 +96,7 @@ function ajaxNutritionFind(nixId) {
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            console.log(dataOutput);
+            //            console.log(dataOutput);
             displayAddedFoods(dataOutput.foods);
             //            displayNutritionSearch(dataOutput.branded);            // displayActiveActivityResults(JSON.parse(resultsForJsonParse));
         })
@@ -120,8 +110,10 @@ function ajaxNutritionFind(nixId) {
 function displayAddedFoods(dataMatches) {
     var buildTheHtmlOutput = "";
     var counter = 0;
-    console.log(dataMatches);
+    //    console.log(dataMatches);
+    //    console.log(loggedInUser);
     $.each(dataMatches, function (dataMatchesKey, dataMatchesValue) {
+
         if (counter < 5) {
             //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
             buildTheHtmlOutput += '<li class="events">'; // each item needs to be a stand alone seperate form
@@ -142,6 +134,7 @@ function displayAddedFoods(dataMatches) {
                 sugar: dataMatchesValue.nf_sugars,
                 sodium: dataMatchesValue.nf_sodium,
                 satFat: dataMatchesValue.nf_saturated_fat,
+                username: loggedInUser
             };
 
             $.ajax({
@@ -152,7 +145,7 @@ function displayAddedFoods(dataMatches) {
                     contentType: 'application/json'
                 })
                 .done(function (result) {
-                    console.log(result);
+                    //                    console.log(result);
                     getFoodItems();
                 })
                 .fail(function (jqXHR, error, errorThrown) {
@@ -161,7 +154,7 @@ function displayAddedFoods(dataMatches) {
                     console.log(errorThrown);
                 });
 
-            console.log(nutrientInfoObject);
+            //            console.log(nutrientInfoObject);
             // a for each check
             //            $('.selected-items').append(nutrientInfoObject.name); //to keep adding new ones
             //total nutrition list appending
@@ -194,9 +187,9 @@ function displayAddedFoods(dataMatches) {
             let macroProtein = ((checkValue(nutrientInfoObject.protein) * 4) / (checkValue(nutrientInfoObject.calories)) * 100).toFixed(2);
             let macroFat = ((checkValue(nutrientInfoObject.totalFat) * 9) / (checkValue(nutrientInfoObject.calories)) * 100).toFixed(2);
             let carbSugar = (nutrientInfoObject.carbs) + (nutrientInfoObject.sugar);
-            console.log(carbSugar);
+            //            console.log(carbSugar);
             let macroCarb = (((carbSugar * 4) / (checkValue(nutrientInfoObject.calories))) * 100).toFixed(2);
-            console.log(macroCarb, macroFat, macroProtein, );
+            //            console.log(macroCarb, macroFat, macroProtein, );
 
             $('#js-kcal-p').html(pCalories);
             $('#js-carb-p').html(pCarb);
@@ -222,7 +215,6 @@ function displayAddedFoods(dataMatches) {
             $('#js-sodium').html(checkValue(nutrientInfoObject.sodium));
             $('#js-potassium').html(checkValue(nutrientInfoObject.potassium));
         };
-
     });
 };
 
@@ -266,7 +258,7 @@ function displayNutritionSearch(dataMatches) {
     //create an empty variable to store one LI for each of the results
     var buildTheHtmlOutput = "";
     var counter = 0;
-    console.log(dataMatches);
+    //    console.log(dataMatches);
     $.each(dataMatches, function (dataMatchesKey, dataMatchesValue) {
         if (counter < 5) {
             //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
@@ -297,38 +289,40 @@ function totalMealNutrition(dataMatches) {
     let sodiumTotal = 0;
     let potassiumTotal = 0;
     let allocateItemToMealIDs = "";
-    console.log(dataMatches);
+    //    console.log(dataMatches);
+    //    console.log(loggedInUser);
 
     let appendTotalNutrition = '';
 
     $('.selected-items ul').html("");
     $.each(dataMatches.foodLogResults, function (dataMatchesKey, dataMatchesValue) {
-        if (dataMatchesValue.meal == '') {
+        if (dataMatchesValue.username == loggedInUser) {
+            if (dataMatchesValue.meal == '') {
 
-            kcalTotal += parseInt(checkValue(dataMatchesValue.calories));
-            carbTotal += parseInt(checkValue(dataMatchesValue.carbs));
-            fiberTotal += parseInt(checkValue(dataMatchesValue.fiber));
-            sugarTotal += parseInt(checkValue(dataMatchesValue.sugar));
-            fatTotal += parseInt(checkValue(dataMatchesValue.totalFat));
-            proteinTotal += parseInt(checkValue(dataMatchesValue.protein));
-            sodiumTotal += parseInt(checkValue(dataMatchesValue.sodium));
-            potassiumTotal += parseInt(checkValue(dataMatchesValue.potassium));
-            console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+                kcalTotal += parseInt(checkValue(dataMatchesValue.calories));
+                carbTotal += parseInt(checkValue(dataMatchesValue.carbs));
+                fiberTotal += parseInt(checkValue(dataMatchesValue.fiber));
+                sugarTotal += parseInt(checkValue(dataMatchesValue.sugar));
+                fatTotal += parseInt(checkValue(dataMatchesValue.totalFat));
+                proteinTotal += parseInt(checkValue(dataMatchesValue.protein));
+                sodiumTotal += parseInt(checkValue(dataMatchesValue.sodium));
+                potassiumTotal += parseInt(checkValue(dataMatchesValue.potassium));
+                //                console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
 
 
-            appendTotalNutrition += '<li class="events">'; // each item needs to be a stand alone seperate form
-            appendTotalNutrition += '<form class="deleteToMyMealForm">';
-            appendTotalNutrition += '<input type="hidden" class="deleteToMealNameID" value="' + dataMatchesValue._id + '">';
-            appendTotalNutrition += '<input type="hidden" class="deleteToMealNameValue" value="' + dataMatchesValue.name + '">';
-            appendTotalNutrition += '<button type="submit" class="add-item deleteToMealSubmitButton " value="">-';
-            appendTotalNutrition += '</button>';
-            appendTotalNutrition += '</form>';
-            appendTotalNutrition += (dataMatchesValue.name);
-            appendTotalNutrition += '</li>'
+                appendTotalNutrition += '<li class="events">'; // each item needs to be a stand alone seperate form
+                appendTotalNutrition += '<form class="deleteToMyMealForm">';
+                appendTotalNutrition += '<input type="hidden" class="deleteToMealNameID" value="' + dataMatchesValue._id + '">';
+                appendTotalNutrition += '<input type="hidden" class="deleteToMealNameValue" value="' + dataMatchesValue.name + '">';
+                appendTotalNutrition += '<button type="submit" class="add-item deleteToMealSubmitButton " value="">-';
+                appendTotalNutrition += '</button>';
+                appendTotalNutrition += '</form>';
+                appendTotalNutrition += (dataMatchesValue.name);
+                appendTotalNutrition += '</li>'
 
-            allocateItemToMealIDs += dataMatchesValue._id + ",";
-        }
-
+                allocateItemToMealIDs += dataMatchesValue._id + ",";
+            }
+        };
     });
 
     $('.matching-results .allocateItemToMeal').val(allocateItemToMealIDs);
@@ -336,7 +330,7 @@ function totalMealNutrition(dataMatches) {
     $('.selected-items ul').append(appendTotalNutrition);
 
 
-    console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+    //    console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
     let pCaloriesTotal = (((kcalTotal) / 2000) * 100).toFixed(2);
     let pCarbTotal = (((carbTotal) / 175) * 100).toFixed(2);
     let pSugarTotal = (((sugarTotal) / 25) * 100).toFixed(2);
@@ -345,14 +339,14 @@ function totalMealNutrition(dataMatches) {
     let pProteinTotal = (((proteinTotal) / 200) * 100).toFixed(2);
     let pSodiumTotal = (((sodiumTotal) / 2000) * 100).toFixed(2);
     let pPotassiumTotal = (((potassiumTotal) / 5000) * 100).toFixed(2);
-    console.log(pCaloriesTotal, pCarbTotal, pSugarTotal, pFiberTotal, pFatTotal, pProteinTotal, pSodiumTotal, pPotassiumTotal);
+    //    console.log(pCaloriesTotal, pCarbTotal, pSugarTotal, pFiberTotal, pFatTotal, pProteinTotal, pSodiumTotal, pPotassiumTotal);
 
     let macroProteinTotal = ((checkValue(proteinTotal) * 4) / (checkValue(kcalTotal)) * 100).toFixed(2);
     let macroFatTotal = ((checkValue(fatTotal) * 9) / (checkValue(kcalTotal)) * 100).toFixed(2);
     let carbSugarTotal = carbTotal + sugarTotal;
     let macroCarbTotal = (((carbSugarTotal * 4) / (checkValue(kcalTotal))) * 100).toFixed(2);
-    console.log(carbTotal + sugarTotal, fatTotal, proteinTotal);
-    console.log(macroCarbTotal, macroFatTotal, macroProteinTotal, );
+    //    console.log(carbTotal + sugarTotal, fatTotal, proteinTotal);
+    //    console.log(macroCarbTotal, macroFatTotal, macroProteinTotal, );
 
     $("#js-total-kcal").html(kcalTotal);
     $("#js-total-carb").html(carbTotal);
@@ -377,7 +371,6 @@ function totalMealNutrition(dataMatches) {
     $("#js-macro-carb-total").html(macroCarbTotal);
 };
 
-
 function getFoodItems() {
     $.ajax({
             type: "GET",
@@ -385,8 +378,10 @@ function getFoodItems() {
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            console.log(dataOutput);
+            //            console.log(dataOutput);
             totalMealNutrition(dataOutput);
+            updateMealTimeNutrition(dataOutput);
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -405,95 +400,176 @@ function updateMealTimeNutrition(dataMatches) {
     let proteinTotal = 0;
     let sodiumTotal = 0;
     let potassiumTotal = 0;
-    let allocateItemToMealIDs = "";
-    console.log(dataMatches);
-
-    let appendTotalNutrition = '';
-
-    $('.selected-items ul').html("");
+    //    console.log(dataMatches);
+    //    console.log(loggedInUser);
     $.each(dataMatches.foodLogResults, function (dataMatchesKey, dataMatchesValue) {
-        if (dataMatchesValue.meal == 'breakfast') {
-//aggregate data 4 breakfast
-            kcalTotal += parseInt(checkValue(dataMatchesValue.calories));
-            carbTotal += parseInt(checkValue(dataMatchesValue.carbs));
-            fiberTotal += parseInt(checkValue(dataMatchesValue.fiber));
-            sugarTotal += parseInt(checkValue(dataMatchesValue.sugar));
-            fatTotal += parseInt(checkValue(dataMatchesValue.totalFat));
-            proteinTotal += parseInt(checkValue(dataMatchesValue.protein));
-            sodiumTotal += parseInt(checkValue(dataMatchesValue.sodium));
-            potassiumTotal += parseInt(checkValue(dataMatchesValue.potassium));
-            console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+        if (dataMatchesValue.username == loggedInUser) {
+            if (dataMatchesValue.meal == 'lunch') {
+                console.log('update for lunch: ', dataMatchesValue);
+                //aggregate data 4 breakfast
+                kcalTotal += parseInt(checkValue(dataMatchesValue.calories));
+                carbTotal += parseInt(checkValue(dataMatchesValue.carbs));
+                fiberTotal += parseInt(checkValue(dataMatchesValue.fiber));
+                sugarTotal += parseInt(checkValue(dataMatchesValue.sugar));
+                fatTotal += parseInt(checkValue(dataMatchesValue.totalFat));
+                proteinTotal += parseInt(checkValue(dataMatchesValue.protein));
+                sodiumTotal += parseInt(checkValue(dataMatchesValue.sodium));
+                potassiumTotal += parseInt(checkValue(dataMatchesValue.potassium));
+                //                console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+                //display data for breakfast
+                //                console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+                let pCaloriesTotal = (((kcalTotal) / 2000) * 100).toFixed(2);
+                let pCarbTotal = (((carbTotal) / 175) * 100).toFixed(2);
+                let pSugarTotal = (((sugarTotal) / 25) * 100).toFixed(2);
+                let pFiberTotal = (((fiberTotal) / 30) * 100).toFixed(2);
+                let pFatTotal = (((fatTotal) / 200) * 100).toFixed(2);
+                let pProteinTotal = (((proteinTotal) / 200) * 100).toFixed(2);
+                let pSodiumTotal = (((sodiumTotal) / 2000) * 100).toFixed(2);
+                let pPotassiumTotal = (((potassiumTotal) / 5000) * 100).toFixed(2);
+                //                console.log(pCaloriesTotal, pCarbTotal, pSugarTotal, pFiberTotal, pFatTotal, pProteinTotal, pSodiumTotal, pPotassiumTotal);
 
-//display data for breakfast
-            appendTotalNutrition += '<li class="events">'; // each item needs to be a stand alone seperate form
-            appendTotalNutrition += '<form class="deleteToMyMealForm">';
-            appendTotalNutrition += '<input type="hidden" class="deleteToMealNameID" value="' + dataMatchesValue._id + '">';
-            appendTotalNutrition += '<input type="hidden" class="deleteToMealNameValue" value="' + dataMatchesValue.name + '">';
-            appendTotalNutrition += '<button type="submit" class="add-item deleteToMealSubmitButton " value="">-';
-            appendTotalNutrition += '</button>';
-            appendTotalNutrition += '</form>';
-            appendTotalNutrition += (dataMatchesValue.name);
-            appendTotalNutrition += '</li>'
+                let macroProteinTotal = ((checkValue(proteinTotal) * 4) / (checkValue(kcalTotal)) * 100).toFixed(2);
+                let macroFatTotal = ((checkValue(fatTotal) * 9) / (checkValue(kcalTotal)) * 100).toFixed(2);
+                let carbSugarTotal = carbTotal + sugarTotal;
+                let macroCarbTotal = (((carbSugarTotal * 4) / (checkValue(kcalTotal))) * 100).toFixed(2);
+                //                console.log(carbTotal + sugarTotal, fatTotal, proteinTotal);
+                //                console.log(macroCarbTotal, macroFatTotal, macroProteinTotal, );
+                //output to breakfast location
+                $("#js-total-kcal-lunch").html(kcalTotal);
+                $("#js-total-carb-lunch").html(carbTotal);
+                $("#js-total-sugar-lunch").html(sugarTotal);
+                $("#js-total-fiber-lunch").html(fiberTotal);
+                $("#js-total-fat-lunch").html(fatTotal);
+                $("#js-total-protein-lunch").html(proteinTotal);
+                $("#js-total-sodium-lunch").html(sodiumTotal);
+                $("#js-total-potassium-lunch").html(potassiumTotal);
 
-            console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
-            let pCaloriesTotal = (((kcalTotal) / 2000) * 100).toFixed(2);
-            let pCarbTotal = (((carbTotal) / 175) * 100).toFixed(2);
-            let pSugarTotal = (((sugarTotal) / 25) * 100).toFixed(2);
-            let pFiberTotal = (((fiberTotal) / 30) * 100).toFixed(2);
-            let pFatTotal = (((fatTotal) / 200) * 100).toFixed(2);
-            let pProteinTotal = (((proteinTotal) / 200) * 100).toFixed(2);
-            let pSodiumTotal = (((sodiumTotal) / 2000) * 100).toFixed(2);
-            let pPotassiumTotal = (((potassiumTotal) / 5000) * 100).toFixed(2);
-            console.log(pCaloriesTotal, pCarbTotal, pSugarTotal, pFiberTotal, pFatTotal, pProteinTotal, pSodiumTotal, pPotassiumTotal);
+                $("#js-percent-kcal-lunch").html(pCaloriesTotal);
+                $("#js-percent-carb-lunch").html(pCarbTotal);
+                $("#js-percent-sugar-lunch").html(pSugarTotal);
+                $("#js-percent-fiber-lunch").html(pFiberTotal);
+                $("#js-percent-fat-lunch").html(pFatTotal);
+                $("#js-percent-protein-lunch").html(pProteinTotal);
+                $("#js-percent-sodium-lunch").html(pSodiumTotal);
+                $("#js-percent-potassium-lunch").html(pPotassiumTotal);
 
-            let macroProteinTotal = ((checkValue(proteinTotal) * 4) / (checkValue(kcalTotal)) * 100).toFixed(2);
-            let macroFatTotal = ((checkValue(fatTotal) * 9) / (checkValue(kcalTotal)) * 100).toFixed(2);
-            let carbSugarTotal = carbTotal + sugarTotal;
-            let macroCarbTotal = (((carbSugarTotal * 4) / (checkValue(kcalTotal))) * 100).toFixed(2);
-            console.log(carbTotal + sugarTotal, fatTotal, proteinTotal);
-            console.log(macroCarbTotal, macroFatTotal, macroProteinTotal, );
-            //output to breakfast location
-            $("#js-total-kcal").html(kcalTotal);
-            $("#js-total-carb").html(carbTotal);
-            $("#js-total-sugar").html(sugarTotal);
-            $("#js-total-fiber").html(fiberTotal);
-            $("#js-total-fat").html(fatTotal);
-            $("#js-total-protein").html(proteinTotal);
-            $("#js-total-sodium").html(sodiumTotal);
-            $("#js-total-potassium").html(potassiumTotal);
+                $("#js-lunch-protein-macro").html(macroProteinTotal);
+                $("#js-lunch-fat-macro").html(macroFatTotal);
+                $("#js-lunch-carb-macro").html(macroCarbTotal);
+            };
+            if (dataMatchesValue.meal == 'dinner') {
+                console.log('update for dinner: ', dataMatchesValue);
+                //aggregate data 4 breakfast
+                kcalTotal += parseInt(checkValue(dataMatchesValue.calories));
+                carbTotal += parseInt(checkValue(dataMatchesValue.carbs));
+                fiberTotal += parseInt(checkValue(dataMatchesValue.fiber));
+                sugarTotal += parseInt(checkValue(dataMatchesValue.sugar));
+                fatTotal += parseInt(checkValue(dataMatchesValue.totalFat));
+                proteinTotal += parseInt(checkValue(dataMatchesValue.protein));
+                sodiumTotal += parseInt(checkValue(dataMatchesValue.sodium));
+                potassiumTotal += parseInt(checkValue(dataMatchesValue.potassium));
+                //                console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+                //display data for breakfast
+                //                console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+                let pCaloriesTotal = (((kcalTotal) / 2000) * 100).toFixed(2);
+                let pCarbTotal = (((carbTotal) / 175) * 100).toFixed(2);
+                let pSugarTotal = (((sugarTotal) / 25) * 100).toFixed(2);
+                let pFiberTotal = (((fiberTotal) / 30) * 100).toFixed(2);
+                let pFatTotal = (((fatTotal) / 200) * 100).toFixed(2);
+                let pProteinTotal = (((proteinTotal) / 200) * 100).toFixed(2);
+                let pSodiumTotal = (((sodiumTotal) / 2000) * 100).toFixed(2);
+                let pPotassiumTotal = (((potassiumTotal) / 5000) * 100).toFixed(2);
+                //                console.log(pCaloriesTotal, pCarbTotal, pSugarTotal, pFiberTotal, pFatTotal, pProteinTotal, pSodiumTotal, pPotassiumTotal);
 
-            $("#js-percent-kcal").html(pCaloriesTotal);
-            $("#js-percent-carb").html(pCarbTotal);
-            $("#js-percent-sugar").html(pSugarTotal);
-            $("#js-percent-fiber").html(pFiberTotal);
-            $("#js-percent-fat").html(pFatTotal);
-            $("#js-percent-protein").html(pProteinTotal);
-            $("#js-percent-sodium").html(pSodiumTotal);
-            $("#js-percent-potassium").html(pPotassiumTotal);
+                let macroProteinTotal = ((checkValue(proteinTotal) * 4) / (checkValue(kcalTotal)) * 100).toFixed(2);
+                let macroFatTotal = ((checkValue(fatTotal) * 9) / (checkValue(kcalTotal)) * 100).toFixed(2);
+                let carbSugarTotal = carbTotal + sugarTotal;
+                let macroCarbTotal = (((carbSugarTotal * 4) / (checkValue(kcalTotal))) * 100).toFixed(2);
+                //                console.log(carbTotal + sugarTotal, fatTotal, proteinTotal);
+                //                console.log(macroCarbTotal, macroFatTotal, macroProteinTotal, );
+                //output to breakfast location
+                $("#js-total-kcal-dinner").html(kcalTotal);
+                $("#js-total-carb-dinner").html(carbTotal);
+                $("#js-total-sugar-dinner").html(sugarTotal);
+                $("#js-total-fiber-dinner").html(fiberTotal);
+                $("#js-total-fat-dinner").html(fatTotal);
+                $("#js-total-protein-dinner").html(proteinTotal);
+                $("#js-total-sodium-dinner").html(sodiumTotal);
+                $("#js-total-potassium-dinner").html(potassiumTotal);
 
-            $("#js-macro-protein-total").html(macroProteinTotal);
-            $("#js-macro-fat-total").html(macroFatTotal);
-            $("#js-macro-carb-total").html(macroCarbTotal);
+                $("#js-percent-kcal-dinner").html(pCaloriesTotal);
+                $("#js-percent-carb-dinner").html(pCarbTotal);
+                $("#js-percent-sugar-dinner").html(pSugarTotal);
+                $("#js-percent-fiber-dinner").html(pFiberTotal);
+                $("#js-percent-fat-dinner").html(pFatTotal);
+                $("#js-percent-protein-dinner").html(pProteinTotal);
+                $("#js-percent-sodium-dinner").html(pSodiumTotal);
+                $("#js-percent-potassium-dinner").html(pPotassiumTotal);
 
+                $("#js-dinner-protein-macro").html(macroProteinTotal);
+                $("#js-dinner-fat-macro").html(macroFatTotal);
+                $("#js-dinner-carb-macro").html(macroCarbTotal);
+            };
+            if (dataMatchesValue.meal == 'breakfast') {
+                console.log('update for breakfast: ', dataMatchesValue);
+                //aggregate data 4 breakfast
+                kcalTotal += parseInt(checkValue(dataMatchesValue.calories));
+                carbTotal += parseInt(checkValue(dataMatchesValue.carbs));
+                fiberTotal += parseInt(checkValue(dataMatchesValue.fiber));
+                sugarTotal += parseInt(checkValue(dataMatchesValue.sugar));
+                fatTotal += parseInt(checkValue(dataMatchesValue.totalFat));
+                proteinTotal += parseInt(checkValue(dataMatchesValue.protein));
+                sodiumTotal += parseInt(checkValue(dataMatchesValue.sodium));
+                potassiumTotal += parseInt(checkValue(dataMatchesValue.potassium));
+                //                console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+                //display data for breakfast
+                //                console.log(kcalTotal, carbTotal, sugarTotal, fiberTotal, fatTotal, proteinTotal, sodiumTotal, potassiumTotal);
+                let pCaloriesTotal = (((kcalTotal) / 2000) * 100).toFixed(2);
+                let pCarbTotal = (((carbTotal) / 175) * 100).toFixed(2);
+                let pSugarTotal = (((sugarTotal) / 25) * 100).toFixed(2);
+                let pFiberTotal = (((fiberTotal) / 30) * 100).toFixed(2);
+                let pFatTotal = (((fatTotal) / 200) * 100).toFixed(2);
+                let pProteinTotal = (((proteinTotal) / 200) * 100).toFixed(2);
+                let pSodiumTotal = (((sodiumTotal) / 2000) * 100).toFixed(2);
+                let pPotassiumTotal = (((potassiumTotal) / 5000) * 100).toFixed(2);
+                //                console.log(pCaloriesTotal, pCarbTotal, pSugarTotal, pFiberTotal, pFatTotal, pProteinTotal, pSodiumTotal, pPotassiumTotal);
 
-        }
+                let macroProteinTotal = ((checkValue(proteinTotal) * 4) / (checkValue(kcalTotal)) * 100).toFixed(2);
+                let macroFatTotal = ((checkValue(fatTotal) * 9) / (checkValue(kcalTotal)) * 100).toFixed(2);
+                let carbSugarTotal = carbTotal + sugarTotal;
+                let macroCarbTotal = (((carbSugarTotal * 4) / (checkValue(kcalTotal))) * 100).toFixed(2);
+                //                console.log(carbTotal + sugarTotal, fatTotal, proteinTotal);
+                //                console.log(macroCarbTotal, macroFatTotal, macroProteinTotal, );
+                //output to breakfast location
+                $("#js-total-kcal-breakfast").html(kcalTotal);
+                $("#js-total-carb-breakfast").html(carbTotal);
+                $("#js-total-sugar-breakfast").html(sugarTotal);
+                $("#js-total-fiber-breakfast").html(fiberTotal);
+                $("#js-total-fat-breakfast").html(fatTotal);
+                $("#js-total-protein-breakfast").html(proteinTotal);
+                $("#js-total-sodium-breakfast").html(sodiumTotal);
+                $("#js-total-potassium-breakfast").html(potassiumTotal);
 
+                $("#js-percent-kcal-breakfast").html(pCaloriesTotal);
+                $("#js-percent-carb-breakfast").html(pCarbTotal);
+                $("#js-percent-sugar-breakfast").html(pSugarTotal);
+                $("#js-percent-fiber-breakfast").html(pFiberTotal);
+                $("#js-percent-fat-breakfast").html(pFatTotal);
+                $("#js-percent-protein-breakfast").html(pProteinTotal);
+                $("#js-percent-sodium-breakfast").html(pSodiumTotal);
+                $("#js-percent-potassium-breakfast").html(pPotassiumTotal);
+
+                $("#js-breakfast-protein-macro").html(macroProteinTotal);
+                $("#js-breakfast-fat-macro").html(macroFatTotal);
+                $("#js-breakfast-carb-macro").html(macroCarbTotal);
+            }
+        };
     });
 
-
-    $('.selected-items ul').append(appendTotalNutrition);
-
-
-
 };
-
 //Step 2 - Use function and objects and find the triggers
 
-
-
 $(document).ready(function () {
-    //    containers to show: .landing 2
-    //    containers to hide: .signup    .add-recipe    .nutrient-profile     .weekly    .saved-recipes   .main-page   .daily 6
     $('.signup').hide();
     $('.add-recipe').hide();
     $('.nutrient-profile').hide();
@@ -502,9 +578,7 @@ $(document).ready(function () {
     $('.saved-recipes').hide();
     $('.main-page').hide();
     $('.landing').show();
-
-
-    console.log("initial logged in user = ", loggedInUser);
+    //    console.log("initial logged in user = ", loggedInUser);
     var nowUnixTime = new Date().getTime() / 1000;
     if (loggedInUser != "") {
         var nowUnixTime = new Date().getTime() / 1000;
@@ -559,18 +633,15 @@ $(document).ready(function () {
 
         }
     });
-
     //breakfast lunch dinner tracker and listeners
-
     $('#js-meal-time').on('click', function (event) {
         event.preventDefault;
-
     });
     $('#js-save-meal').on('click', function (event) {
         event.preventDefault;
         let selectMealTime = $('#js-dropdown-value').val();
         let selectedItemsIDs = $('.allocateItemToMeal').val();
-        console.log(selectMealTime, selectedItemsIDs);
+        //        console.log(selectMealTime, selectedItemsIDs);
 
         const allocateItemsToMealObj = {
             mealTime: selectMealTime,
@@ -592,17 +663,6 @@ $(document).ready(function () {
                 console.log(error);
                 console.log(errorThrown);
             });
-        //        if (time = breakfast) {
-        //
-        //        }
-        //        if (time = lunch){
-        //
-        //        }
-        //        if (time = dinner){
-        //
-        //        }
-
-
     });
     $('#js-breakfast-target').on('click', function (event) {
         event.preventDefault;
@@ -613,7 +673,6 @@ $(document).ready(function () {
     $('#js-dinner-target').on('click', function (event) {
         event.preventDefault;
     });
-
     // User FLOW 2: Existing User signs in on landing page,
     $('#login-form').on('submit keypress', function (event) {
         event.preventDefault();
@@ -622,14 +681,14 @@ $(document).ready(function () {
 
             var inputUname = $('#login-username-form').val();
             var inputPw = $('#login-password-form').val();
-            console.log(inputUname, inputPw);
+            //            console.log(inputUname, inputPw);
             // check for spaces, empty, undefined
             if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
                 alert('Invalid username');
             } else if ((!inputPw) || (inputPw.length < 1) || (inputPw.indexOf(' ') > 0)) {
                 alert('Invalid password');
             } else {
-                console.log('Success');
+                //                console.log('Success');
                 loginUser(inputUname, inputPw);
                 //                checkLogedInUser(nowUnixTime, loggedInUser);
                 $('.add-recipe').hide();
@@ -648,7 +707,6 @@ $(document).ready(function () {
 
         };
     });
-
     //User then Logs in and is on Userpage -main flow
     //Jump to Daily Tracker --off shoot
     $('#js-daily-tracker').on('click', function (event) {
@@ -714,11 +772,10 @@ $(document).ready(function () {
 
     });
 
-
     $(document).on('submit', '.addToMyMealForm', function (event) {
         event.preventDefault();
         let nixId = $(this).parent().find('.addToMealNameValue').val();
-        console.log(nixId);
+        //        console.log(nixId);
         $('.nutrient-profile').show();
         $('.weekly').show();
         ajaxNutritionFind(nixId);
@@ -728,8 +785,8 @@ $(document).ready(function () {
     $(document).on('submit', '.deleteToMyMealForm', function (event) {
         event.preventDefault();
         let deleteId = $(this).parent().find('.deleteToMealNameID').val();
-        console.log(deleteId);
-        if (confirm('Are you SURE you want to delete this awesome accomplishment? Your data will be PERMANENTLY erased.') === true) {
+        //        console.log(deleteId);
+        if (confirm('Are you sure you want to delete this food item?') === true) {
             $.ajax({
                 method: 'DELETE',
                 url: '/nix/' + deleteId,

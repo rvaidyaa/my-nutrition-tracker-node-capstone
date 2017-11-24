@@ -274,6 +274,7 @@ form {
     margin: 1px;
 }
 
+
 /*
 .dropdown:hover .dropdown-content {
     display: block;
@@ -450,7 +451,6 @@ form {
     border-radius: 0.5rem;
     color: azure;
     background-image: url(/media/transparent.jpg);
-    padding: 1rem;
     line-height: 35px;
 }
 
@@ -679,6 +679,7 @@ footer {
     .macro-spread {
         font-size: 12px;
         padding: 4px;
+        width: 32%%;
     }
 
     main.weekly {

@@ -46,6 +46,10 @@ const foodLogSchema = new mongoose.Schema({
     meal: {
         type: String,
         required: false
+    },
+    username: {
+        type: String,
+        required: false
     }
 });
 
