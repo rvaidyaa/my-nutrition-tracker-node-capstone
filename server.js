@@ -75,7 +75,7 @@ const getFromNutritionix = function (searchTerm) {
         .header("x-app-id", "91d999d6")
         .header("x-app-key", "90c9640d86c64ef7df97b0c16d73a27c")
         .end(function (result) {
-            console.log(result.status, result.headers, result.body);
+            //            console.log(result.status, result.headers, result.body);
             //success scenario
             if (result.ok) {
                 emitter.emit('end', result.body);
@@ -105,7 +105,7 @@ const getFromNutritionixNutrition = function (searchTerm) {
         .header("x-app-id", "91d999d6")
         .header("x-app-key", "90c9640d86c64ef7df97b0c16d73a27c")
         .end(function (result) {
-            console.log(result.status, result.headers, result.body);
+            //            console.log(result.status, result.headers, result.body);
             //success scenario
             if (result.ok) {
                 emitter.emit('end', result.body);
@@ -138,7 +138,7 @@ const getFromNutritionixNutrition = function (searchTerm) {
 app.use('*', (req, res, next) => {
     // check if client sent cookie
     var cookie = req.cookies.USER_LOGGEDIN_COOKIE;
-    console.log('inital cookies = ', req.cookies);
+    //    console.log('inital cookies = ', req.cookies);
     if ((cookie == undefined) || (cookie.lenght == 0)) {
         // no: set a new cookie
 
@@ -146,13 +146,13 @@ app.use('*', (req, res, next) => {
             maxAge: 900000,
             httpOnly: true
         });
-        console.log('cookie created successfully');
+        //        console.log('cookie created successfully');
 
     } else {
         // yes, cookie was already present
-        console.log('cookie exists', cookie);
+        //        console.log('cookie exists', cookie);
     }
-    console.log('cookie set = ', req.cookies);
+    //    console.log('cookie set = ', req.cookies);
     next(); // <-- important!
 });
 
@@ -198,7 +198,7 @@ app.get('/get-requested-food-items/', function (req, res) { //make the name more
     foodLog
         .find()
         .then(function (foodLogResults) {
-            console.log(foodLogResults);
+            //            console.log(foodLogResults);
             res.json({
                 foodLogResults
             });
@@ -244,7 +244,7 @@ app.post('/users/create', (req, res) => {
                     });
                 }
                 if (item) {
-                    console.log(`User \`${username}\` created.`);
+                    //                    console.log(`User \`${username}\` created.`);
                     return res.json(item);
                 }
             });
@@ -255,7 +255,7 @@ app.post('/users/create', (req, res) => {
 // signing in a user
 app.post('/users/login', function (req, res) {
 
-    console.log(req.body.username, req.body.password)
+    //    console.log(req.body.username, req.body.password)
     User
         .findOne({
             username: req.body.username
@@ -281,7 +281,7 @@ app.post('/users/login', function (req, res) {
                         });
                     } else {
                         let loggedInUser = req.body.username;
-                        console.log(loggedInUser);
+                        //                        console.log(loggedInUser);
                         return res.json(loggedInUser);
                     }
                 });
@@ -336,7 +336,7 @@ app.post('/food-log/food-item', (req, res) => {
             });
         }
         if (item) {
-            console.log(`Food Item \`${name}\` added.`);
+            //            console.log(`Food Item \`${name}\` added.`);
             return res.json(item);
         }
     });
@@ -349,10 +349,10 @@ app.put('/allocate-item-to-meal', function (req, res) {
     let itemsId = req.body.itemsId;
 
     let itemsIdObjt = itemsId.split(",");
-    console.log(itemsIdObjt);
+    //    console.log(itemsIdObjt);
 
     itemsIdObjt.forEach(function (value, key) {
-        console.log(key, value);
+        //        console.log(key, value);
         if (value != "") {
             foodLog
                 .findByIdAndUpdate(value, {
@@ -397,6 +397,22 @@ app.delete('/nix/:number', function (req, res) { //make better name
         });
     });
 });
+
+app.delete('/delete-nutrition-data/:deleteMeal/:username', function (req, res) { //make better name
+    console.log(req.params.username, req.params.deleteMeal);
+    foodLog.remove({
+        'meal': req.params.deleteMeal
+    }, {
+        'username': req.params.username
+    }).exec().then(function (foodLog) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
 
 
 //// set a cookie
