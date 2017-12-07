@@ -397,12 +397,9 @@ app.delete('/nix/:number', function (req, res) { //make better name
         });
     });
 });
-
-app.delete('/delete-nutrition-data/:deleteMeal/:username', function (req, res) { //make better name
-    console.log(req.params.username, req.params.deleteMeal);
-    foodLog.remove({
-        'meal': req.params.deleteMeal
-    }, {
+app.delete('/delete-nutrition-data/:username', function (req, res) { //make better name
+    console.log(req.params.username);
+    foodLog.deleteMany({
         'username': req.params.username
     }).exec().then(function (foodLog) {
         return res.status(204).end();
@@ -412,6 +409,27 @@ app.delete('/delete-nutrition-data/:deleteMeal/:username', function (req, res) {
         });
     });
 });
+//
+//app.delete('/delete-nutrition-data/:username', function (req, res) { //make better name
+//    console.log(req.params.username);
+//    foodLog.deleteMany({
+//        'username': req.params.username
+//    });
+//});
+//
+//app.delete('/delete-nutrition-data/:deleteMeal/:username', function (req, res) {
+//    foodLog.remove({
+//        'meal': req.params.deleteMeal
+//    }, function (err, item) {
+//        if (err) {
+//            return res.status(500).json({
+//                message: 'Internal Server Error'
+//            });
+//        }
+//        res.status(201).json(item);
+//    });
+//});
+
 
 
 

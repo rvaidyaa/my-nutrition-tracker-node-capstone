@@ -41,15 +41,8 @@
             <input type='text' placeholder="Search Food item" class='ingrediant-input' id='js-search-field' value='Big Mac'>
             <input type="submit" class="user-input" value='Search' id='js-search-ingrediant'>
         </form>
-        <div class="api-results">Closest Matching</div>
+        <ul class="api-results"></ul>
 
-
-        <!--
-        <div class="recipe-name">Recipe name</div>
-        <form action="" class="recipe">
-            <input type='text' placeholder="Enter Recipe Name" class='recipe-input' id='js-recipe-name'>
-        </form>
--->
     </main>
     <main class="nutrient-profile">
         <h1 class='current-food-item'></h1>
@@ -111,7 +104,7 @@
         <div class='selected-items'>
             <ul></ul>
         </div>
-        <form action="" class="matching-results">
+        <form action="" class="matching-results button-background">
             <div role="daily totals">
                 <div class="dropdown">
                     <input type="hidden" class="allocateItemToMeal" value="">
@@ -181,119 +174,116 @@
     <main class="saved-recipes">
         <h1>Daily View<br>
         </h1>
-        <div>
+        <div class='button-background'>
             <button class="results" id=js-add-meal>Add New Meal</button>
             <input type="submit" class="add-item go-to-main" id="js-homepage" value="Home Page">
+            <input type="submit" class="add-item" id="js-delete-all" value="Delete Meals">
         </div>
-        <div class="save">
-            <div class="stored-recipes">
-                <span class="title">Breakfast</span><br>
-                <div>
-                    <input type="hidden" id="js-username-breakfast" value=''>
-                    <input type="submit" class="add-item" id="js-delete-breakfast" value="Delete">
-                </div>
-                <span class="macro-spread" id='js-breakfast-protein'>P</span>
-                <span class="macro-spread" id='js-breakfast-fat'>F</span>
-                <span class="macro-spread" id='js-breakfast-carb'>C</span>
-                <br>
-                <span class="macro-spread" id='js-breakfast-protein-macro'>25% </span>
-                <span class="macro-spread" id='js-breakfast-fat-macro'>50% </span>
-                <span class="macro-spread" id='js-breakfast-carb-macro'>15% </span>
-                <div role="weekly-totals">
-                    <span class='totals'>Nutrient</span>
-                    <span class='totals'>Total</span>
-                    <span class='totals'>%/Daily</span>
-                </div>
-                <div class="three-colums">
-                    <span class='weeklys'>Kcal</span><br>
-                    <span class='weeklys'>Carb</span><br>
-                    <span class='weeklys'>Sugar</span><br>
-                    <span class='weeklys'>Fiber</span><br>
-                    <span class='weeklys'>Fat</span><br>
-                    <span class='weeklys'>Protein</span><br>
-                    <span class='weeklys'>Sodium</span><br>
-                    <span class='weeklys'>Potassium</span><br>
-
-                </div>
-                <div class="three-colums">
-                    <span class='weeklys' id='js-total-kcal-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-total-carb-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-total-sugar-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-total-fiber-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-total-fat-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-total-protein-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-total-sodium-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-total-potassium-breakfast'>0</span>
-                </div>
-                <div class="three-colums">
-                    <span class='weeklys' id='js-percent-kcal-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-percent-carb-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-percent-sugar-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-percent-fiber-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-percent-fat-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-percent-protein-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-percent-sodium-breakfast'>0</span><br>
-                    <span class='weeklys' id='js-percent-potassium-breakfast'>0</span><br>
-                </div>
+        <!--        <div class="save">-->
+        <div class="stored-recipes">
+            <span class="title">Breakfast</span><br>
+            <div>
+                <input type="hidden" id="js-username-breakfast" value=''>
             </div>
-            <div class="stored-recipes">
-                <span class="title">Lunch</span><br>
-                <div>
-                    <input type="hidden" id="js-username-lunch" value=''>
-                    <input type="submit" class="add-item" id="js-delete-lunch" value="Delete">
-                </div>
-                <span class="macro-spread" id='js-lunch-protein'>P</span>
-                <span class="macro-spread" id='js-lunch-fat'>F</span>
-                <span class="macro-spread" id='js-lunch-carb'>C</span>
-                <br>
-                <span class="macro-spread" id='js-lunch-protein-macro'>0 </span>
-                <span class="macro-spread" id='js-lunch-fat-macro'>0 </span>
-                <span class="macro-spread" id='js-lunch-carb-macro'>0 </span>
-
-                <div role="weekly-totals">
-                    <span class='totals'>Nutrient</span>
-                    <span class='totals'>Total</span>
-                    <span class='totals'>%/Daily</span>
-                </div>
-                <div class="three-colums">
-                    <span class='weeklys'>Kcal</span><br>
-                    <span class='weeklys'>Carb</span><br>
-                    <span class='weeklys'>Sugar</span><br>
-                    <span class='weeklys'>Fiber</span><br>
-                    <span class='weeklys'>Fat</span><br>
-                    <span class='weeklys'>Protein</span><br>
-                    <span class='weeklys'>Sodium</span><br>
-                    <span class='weeklys'>Potassium</span><br>
-
-                </div>
-                <div class="three-colums">
-                    <span class='weeklys' id='js-total-kcal-lunch'>0</span><br>
-                    <span class='weeklys' id='js-total-carb-lunch'>0</span><br>
-                    <span class='weeklys' id='js-total-sugar-lunch'>0</span><br>
-                    <span class='weeklys' id='js-total-fiber-lunch'>0</span><br>
-                    <span class='weeklys' id='js-total-fat-lunch'>0</span><br>
-                    <span class='weeklys' id='js-total-protein-lunch'>0</span><br>
-                    <span class='weeklys' id='js-total-sodium-lunch'>0</span><br>
-                    <span class='weeklys' id='js-total-potassium-lunch'>0</span>
-                </div>
-                <div class="three-colums">
-                    <span class='weeklys' id='js-percent-kcal-lunch'>0</span><br>
-                    <span class='weeklys' id='js-percent-carb-lunch'>0</span><br>
-                    <span class='weeklys' id='js-percent-sugar-lunch'>0</span><br>
-                    <span class='weeklys' id='js-percent-fiber-lunch'>0</span><br>
-                    <span class='weeklys' id='js-percent-fat-lunch'>0</span><br>
-                    <span class='weeklys' id='js-percent-protein-lunch'>0</span><br>
-                    <span class='weeklys' id='js-percent-sodium-lunch'>0</span><br>
-                    <span class='weeklys' id='js-percent-potassium-lunch'>0</span><br>
-                </div>
+            <span class="macro-spread" id='js-breakfast-protein'>P</span>
+            <span class="macro-spread" id='js-breakfast-fat'>F</span>
+            <span class="macro-spread" id='js-breakfast-carb'>C</span>
+            <br>
+            <span class="macro-spread" id='js-breakfast-protein-macro'>25% </span>
+            <span class="macro-spread" id='js-breakfast-fat-macro'>50% </span>
+            <span class="macro-spread" id='js-breakfast-carb-macro'>15% </span>
+            <div role="weekly-totals">
+                <span class='totals'>Nutrient</span>
+                <span class='totals'>Total</span>
+                <span class='totals'>%/Daily</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys'>Kcal</span><br>
+                <span class='weeklys'>Carb</span><br>
+                <span class='weeklys'>Sugar</span><br>
+                <span class='weeklys'>Fiber</span><br>
+                <span class='weeklys'>Fat</span><br>
+                <span class='weeklys'>Protein</span><br>
+                <span class='weeklys'>Sodium</span><br>
+                <span class='weeklys'>Potassium</span><br>
 
             </div>
-            <div class="stored-recipes">
-                <span class="title">Dinner</span><br>
-                <div>
-                    <input type="hidden" id="js-username-dinner" value=''>
-                    <input type="submit" class="add-item" id="js-delete-dinner" value="Delete">
-                </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-total-kcal-breakfast'>0</span><br>
+                <span class='weeklys' id='js-total-carb-breakfast'>0</span><br>
+                <span class='weeklys' id='js-total-sugar-breakfast'>0</span><br>
+                <span class='weeklys' id='js-total-fiber-breakfast'>0</span><br>
+                <span class='weeklys' id='js-total-fat-breakfast'>0</span><br>
+                <span class='weeklys' id='js-total-protein-breakfast'>0</span><br>
+                <span class='weeklys' id='js-total-sodium-breakfast'>0</span><br>
+                <span class='weeklys' id='js-total-potassium-breakfast'>0</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-percent-kcal-breakfast'>0</span><br>
+                <span class='weeklys' id='js-percent-carb-breakfast'>0</span><br>
+                <span class='weeklys' id='js-percent-sugar-breakfast'>0</span><br>
+                <span class='weeklys' id='js-percent-fiber-breakfast'>0</span><br>
+                <span class='weeklys' id='js-percent-fat-breakfast'>0</span><br>
+                <span class='weeklys' id='js-percent-protein-breakfast'>0</span><br>
+                <span class='weeklys' id='js-percent-sodium-breakfast'>0</span><br>
+                <span class='weeklys' id='js-percent-potassium-breakfast'>0</span><br>
+            </div>
+        </div>
+        <div class="stored-recipes">
+            <span class="title">Lunch</span><br>
+            <div>
+                <input type="hidden" id="js-username-lunch" value=''>
+            </div>
+            <span class="macro-spread" id='js-lunch-protein'>P</span>
+            <span class="macro-spread" id='js-lunch-fat'>F</span>
+            <span class="macro-spread" id='js-lunch-carb'>C</span>
+            <br>
+            <span class="macro-spread" id='js-lunch-protein-macro'>0 </span>
+            <span class="macro-spread" id='js-lunch-fat-macro'>0 </span>
+            <span class="macro-spread" id='js-lunch-carb-macro'>0 </span>
+
+            <div role="weekly-totals">
+                <span class='totals'>Nutrient</span>
+                <span class='totals'>Total</span>
+                <span class='totals'>%/Daily</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys'>Kcal</span><br>
+                <span class='weeklys'>Carb</span><br>
+                <span class='weeklys'>Sugar</span><br>
+                <span class='weeklys'>Fiber</span><br>
+                <span class='weeklys'>Fat</span><br>
+                <span class='weeklys'>Protein</span><br>
+                <span class='weeklys'>Sodium</span><br>
+                <span class='weeklys'>Potassium</span><br>
+
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-total-kcal-lunch'>0</span><br>
+                <span class='weeklys' id='js-total-carb-lunch'>0</span><br>
+                <span class='weeklys' id='js-total-sugar-lunch'>0</span><br>
+                <span class='weeklys' id='js-total-fiber-lunch'>0</span><br>
+                <span class='weeklys' id='js-total-fat-lunch'>0</span><br>
+                <span class='weeklys' id='js-total-protein-lunch'>0</span><br>
+                <span class='weeklys' id='js-total-sodium-lunch'>0</span><br>
+                <span class='weeklys' id='js-total-potassium-lunch'>0</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-percent-kcal-lunch'>0</span><br>
+                <span class='weeklys' id='js-percent-carb-lunch'>0</span><br>
+                <span class='weeklys' id='js-percent-sugar-lunch'>0</span><br>
+                <span class='weeklys' id='js-percent-fiber-lunch'>0</span><br>
+                <span class='weeklys' id='js-percent-fat-lunch'>0</span><br>
+                <span class='weeklys' id='js-percent-protein-lunch'>0</span><br>
+                <span class='weeklys' id='js-percent-sodium-lunch'>0</span><br>
+                <span class='weeklys' id='js-percent-potassium-lunch'>0</span><br>
+            </div>
+
+        </div>
+        <div class="stored-recipes">
+            <span class="title">Dinner</span><br>
+            <div>
+                <input type="hidden" id="js-username-dinner" value=''>
                 <span class="macro-spread" id='js-dinner-protein'>P</span>
                 <span class="macro-spread" id='js-dinner-fat'>F</span>
                 <span class="macro-spread" id='js-dinner-carb'>C</span>
@@ -340,10 +330,11 @@
                 </div>
             </div>
         </div>
+        <!--        </div>-->
     </main>
     <main class="main-page" id='js-main-page'>
         <h1 id="js-user-welcome"></h1>
-        <div role="weekly-totals">
+        <div role="weekly-totals" class='button-background'>
             <button class='results' id='js-logout-button'>Logout</button>
             <button class='results' id='js-daily-tracker'>Daily Tracker</button>
         </div>
@@ -352,54 +343,105 @@
     </main>
     <main class="daily">
         <h1>Daily Micro Macro Nutrient Total</h1>
-        <form action="">
-            <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
-        </form>
-        <div role="daily totals">
-            <span class='totals'>Nutrient</span>
-            <span class='totals'>Total</span>
-            <span class='totals'>%/Daily</span>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys'>Kcal</span><br>
-            <span class='weeklys'>Carb</span><br>
-            <span class='weeklys'>Sugar</span><br>
-            <span class='weeklys'>Fiber</span><br>
-            <span class='weeklys'>Fat</span><br>
-            <span class='weeklys'>Protein</span><br>
-            <span class='weeklys'>Sodium</span><br>
-            <span class='weeklys'>Potassium</span><br>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys' id='total-kcal'>0</span><br>
-            <span class='weeklys' id='total-carb'>0</span><br>
-            <span class='weeklys' id='total-sugar'>0</span><br>
-            <span class='weeklys' id='total-fiber'>0</span><br>
-            <span class='weeklys' id='total-fat'>0</span><br>
-            <span class='weeklys' id='total-protein'>0</span><br>
-            <span class='weeklys' id='total-sodium'>0</span><br>
-            <span class='weeklys' id='total-potassium'>0</span><br>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys' id='percent-kcal'>0</span><br>
-            <span class='weeklys' id='percent-carb'>0</span><br>
-            <span class='weeklys' id='percent-sugar'>0</span><br>
-            <span class='weeklys' id='percent-fiber'>0</span><br>
-            <span class='weeklys' id='percent-fat'>0</span><br>
-            <span class='weeklys' id='percent-protein'>0</span><br>
-            <span class='weeklys' id='percent-sodium'>0</span><br>
-            <span class='weeklys' id='percent-potassium'>0</span><br>
-        </div>
-        <div role='macro-nutrient-spread' class='macro-div'>
-            <span class='macro-spread'>Protein</span>
-            <span class='macro-spread'>Fat</span>
-            <span class='macro-spread'>Carb</span>
+        <!--
+<div role="daily totals" class='stored-recipes'>
+    <span class='totals'>Nutrient</span>
+    <span class='totals'>Total</span>
+    <span class='totals'>%/Daily</span>
+</div>
+<div class="three-colums">
+    <span class='weeklys'>Kcal</span><br>
+    <span class='weeklys'>Carb</span><br>
+    <span class='weeklys'>Sugar</span><br>
+    <span class='weeklys'>Fiber</span><br>
+    <span class='weeklys'>Fat</span><br>
+    <span class='weeklys'>Protein</span><br>
+    <span class='weeklys'>Sodium</span><br>
+    <span class='weeklys'>Potassium</span><br>
+</div>
+<div class="three-colums">
+    <span class='weeklys' id='total-kcal'>0</span><br>
+    <span class='weeklys' id='total-carb'>0</span><br>
+    <span class='weeklys' id='total-sugar'>0</span><br>
+    <span class='weeklys' id='total-fiber'>0</span><br>
+    <span class='weeklys' id='total-fat'>0</span><br>
+    <span class='weeklys' id='total-protein'>0</span><br>
+    <span class='weeklys' id='total-sodium'>0</span><br>
+    <span class='weeklys' id='total-potassium'>0</span><br>
+</div>
+<div class="three-colums">
+    <span class='weeklys' id='percent-kcal'>0</span><br>
+    <span class='weeklys' id='percent-carb'>0</span><br>
+    <span class='weeklys' id='percent-sugar'>0</span><br>
+    <span class='weeklys' id='percent-fiber'>0</span><br>
+    <span class='weeklys' id='percent-fat'>0</span><br>
+    <span class='weeklys' id='percent-protein'>0</span><br>
+    <span class='weeklys' id='percent-sodium'>0</span><br>
+    <span class='weeklys' id='percent-potassium'>0</span><br>
+</div>
+<div role='macro-nutrient-spread' class='macro-div'>
+    <span class='macro-spread'>Protein</span>
+    <span class='macro-spread'>Fat</span>
+    <span class='macro-spread'>Carb</span>
 
-        </div>
-        <span class='macro-spread'>0</span>
-        <span class='macro-spread'>0</span>
-        <span class='macro-spread'>0</span>
+</div>
+<span class='macro-spread' id='daily-protein'>0</span>
+<span class='macro-spread' id='daily-fat'>0</span>
+<span class='macro-spread' id='daily-carb'>0</span>
+-->
 
+        <!--   here-->
+
+        <div class="stored-recipes">
+            <span class="title">Daily</span><br>
+            <div>
+                <input type="hidden" id="js-username-breakfast" value=''>
+            </div>
+            <span class="macro-spread" id='js-breakfast-protein'>P</span>
+            <span class="macro-spread" id='js-breakfast-fat'>F</span>
+            <span class="macro-spread" id='js-breakfast-carb'>C</span>
+            <br>
+            <span class="macro-spread" id='daily-protein'>25% </span>
+            <span class="macro-spread" id='daily-fat'>50% </span>
+            <span class="macro-spread" id='daily-carb'>15% </span>
+            <div role="weekly-totals">
+                <span class='totals'>Nutrient</span>
+                <span class='totals'>Total</span>
+                <span class='totals'>%/Daily</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys'>Kcal</span><br>
+                <span class='weeklys'>Carb</span><br>
+                <span class='weeklys'>Sugar</span><br>
+                <span class='weeklys'>Fiber</span><br>
+                <span class='weeklys'>Fat</span><br>
+                <span class='weeklys'>Protein</span><br>
+                <span class='weeklys'>Sodium</span><br>
+                <span class='weeklys'>Potassium</span><br>
+
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='total-kcal'>0</span><br>
+                <span class='weeklys' id='total-carb'>0</span><br>
+                <span class='weeklys' id='total-sugar'>0</span><br>
+                <span class='weeklys' id='total-fiber'>0</span><br>
+                <span class='weeklys' id='total-fat'>0</span><br>
+                <span class='weeklys' id='total-protein'>0</span><br>
+                <span class='weeklys' id='total-sodium'>0</span><br>
+                <span class='weeklys' id='total-potassium'>0</span><br>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='percent-kcal'>0</span><br>
+                <span class='weeklys' id='percent-carb'>0</span><br>
+                <span class='weeklys' id='percent-sugar'>0</span><br>
+                <span class='weeklys' id='percent-fiber'>0</span><br>
+                <span class='weeklys' id='percent-fat'>0</span><br>
+                <span class='weeklys' id='percent-protein'>0</span><br>
+                <span class='weeklys' id='percent-sodium'>0</span><br>
+                <span class='weeklys' id='percent-potassium'>0</span><br>
+            </div>
+        </div>
+        <!--   here-->
     </main>
     <footer>
         'Created by Rahul Vaidya'

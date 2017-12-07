@@ -145,7 +145,9 @@ function displayAddedFoods(dataMatches) {
             buildTheHtmlOutput += '<li class="events">'; // each item needs to be a stand alone seperate form
             buildTheHtmlOutput += '<button type="submit" class="added-foods addToMealSubmitButton ">' + dataMatchesValue.food_name;
             buildTheHtmlOutput += '</button>';
+            buildTheHtmlOutput += '<div class="brand-name">';
             buildTheHtmlOutput += (dataMatchesValue.food_name);
+            buildTheHtmlOutput += '</div>';
             buildTheHtmlOutput += '</li>';
             counter++;
             var nutrientInfoObject = {
@@ -191,7 +193,9 @@ function displayAddedFoods(dataMatches) {
             appendTotalNutrition += '<button type="submit" class="add-item addToMealSubmitButton " value="">-';
             appendTotalNutrition += '</button>';
             appendTotalNutrition += '</form>';
+            appendTotalNutrition += '<div class="brand-name">';
             appendTotalNutrition += (nutrientInfoObject.name);
+            appendTotalNutrition += '</div>';
             appendTotalNutrition += '</li>'
 
 
@@ -294,7 +298,9 @@ function displayNutritionSearch(dataMatches) {
             buildTheHtmlOutput += '<button type="submit" class="add-item addToMealSubmitButton " value="">+';
             buildTheHtmlOutput += '</button>';
             buildTheHtmlOutput += '</form>';
+            buildTheHtmlOutput += '<div class="brand-name">';
             buildTheHtmlOutput += (dataMatchesValue.brand_name_item_name);
+            buildTheHtmlOutput += '</div>';
             buildTheHtmlOutput += '</li>';
             counter++;
 
@@ -343,7 +349,9 @@ function totalMealNutrition(dataMatches) {
                 appendTotalNutrition += '<button type="submit" class="add-item deleteToMealSubmitButton " value="">-';
                 appendTotalNutrition += '</button>';
                 appendTotalNutrition += '</form>';
+                appendTotalNutrition += '<div class="brand-name">';
                 appendTotalNutrition += (dataMatchesValue.name);
+                appendTotalNutrition += '</div>';
                 appendTotalNutrition += '</li>'
 
                 allocateItemToMealIDs += dataMatchesValue._id + ",";
@@ -398,14 +406,14 @@ function totalMealNutrition(dataMatches) {
 };
 
 function getFoodItems() {
-    console.log('inside getFoodItems funchtion');
+    console.log('inside getFoodItems function');
     $.ajax({
             type: "GET",
             url: "/get-requested-food-items/",
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            //            console.log(dataOutput);
+            console.log(dataOutput);
             totalMealNutrition(dataOutput);
             updateMealTimeNutrition(dataOutput);
 
@@ -416,7 +424,90 @@ function getFoodItems() {
             console.log(errorThrown);
         });
 }
+// function to 0 out the values when delete all is run
+function deleteAllMeals() {
+    //create an empty variable to store one LI for each of the results
+    $("#js-total-kcal-lunch").html('0');
+    $("#js-total-carb-lunch").html('0');
+    $("#js-total-sugar-lunch").html('0');
+    $("#js-total-fiber-lunch").html('0');
+    $("#js-total-fat-lunch").html('0');
+    $("#js-total-protein-lunch").html('0');
+    $("#js-total-sodium-lunch").html('0');
+    $("#js-total-potassium-lunch").html('0');
 
+    $("#js-percent-kcal-lunch").html('0');
+    $("#js-percent-carb-lunch").html('0');
+    $("#js-percent-sugar-lunch").html('0');
+    $("#js-percent-fiber-lunch").html('0');
+    $("#js-percent-fat-lunch").html('0');
+    $("#js-percent-protein-lunch").html('0');
+    $("#js-percent-sodium-lunch").html('0');
+    $("#js-percent-potassium-lunch").html('0');
+
+    $("#js-lunch-protein-macro").html('0');
+    $("#js-lunch-fat-macro").html('0');
+    $("#js-lunch-carb-macro").html('0');
+
+    $("#js-total-kcal-dinner").html('0');
+    $("#js-total-carb-dinner").html('0');
+    $("#js-total-sugar-dinner").html('0');
+    $("#js-total-fiber-dinner").html('0');
+    $("#js-total-fat-dinner").html('0');
+    $("#js-total-protein-dinner").html('0');
+    $("#js-total-sodium-dinner").html('0');
+    $("#js-total-potassium-dinner").html('0');
+
+    $("#js-percent-kcal-dinner").html('0');
+    $("#js-percent-carb-dinner").html('0');
+    $("#js-percent-sugar-dinner").html('0');
+    $("#js-percent-fiber-dinner").html('0');
+    $("#js-percent-fat-dinner").html('0');
+    $("#js-percent-protein-dinner").html('0');
+    $("#js-percent-sodium-dinner").html('0');
+    $("#js-percent-potassium-dinner").html('0');
+
+    $("#js-dinner-protein-macro").html('0');
+    $("#js-dinner-fat-macro").html('0');
+    $("#js-dinner-carb-macro").html('0');
+
+    $("#js-total-kcal-dinner").html('0');
+    $("#js-total-carb-dinner").html('0');
+    $("#js-total-sugar-dinner").html('0');
+    $("#js-total-fiber-dinner").html('0');
+    $("#js-total-fat-dinner").html('0');
+    $("#js-total-protein-dinner").html('0');
+    $("#js-total-sodium-dinner").html('0');
+    $("#js-total-potassium-dinner").html('0');
+
+    $("#js-percent-kcal-dinner").html('0');
+    $("#js-percent-carb-dinner").html('0');
+    $("#js-percent-sugar-dinner").html('0');
+    $("#js-percent-fiber-dinner").html('0');
+    $("#js-percent-fat-dinner").html('0');
+    $("#js-percent-protein-dinner").html('0');
+    $("#js-percent-sodium-dinner").html('0');
+    $("#js-percent-potassium-dinner").html('0');
+
+    $("#js-dinner-protein-macro").html('0');
+    $("#js-dinner-fat-macro").html('0');
+    $("#js-dinner-carb-macro").html('0');
+
+    $("#total-kcal").html('0');
+    $("#total-carb").html('0');
+    $("#total-sugar").html('0');
+    $("#total-fiber").html('0');
+    $("#total-fat").html('0');
+    $("#total-protein").html('0');
+    $("#total-sodium").html('0');
+    $("#total-potassium").html('0');
+
+    $("#daily-protein").html('0');
+    $("#daily-fat").html('0');
+    $("#daily-carb").html('0');
+
+};
+//when meal is saved as B L OR D, sends user to daily page and updates the values for BLD.
 function updateMealTimeNutrition(dataMatches) {
     //create an empty variable to store one LI for each of the results
     let kcalTotalBreakfast = 0;
@@ -656,8 +747,12 @@ function updateMealTimeNutrition(dataMatches) {
     sodiumTotalDaily += sodiumTotalLunch;
     potassiumTotalDaily += potassiumTotalLunch;
 
+    dailyProtein = ((checkValue(proteinTotalDaily) * 4) / (checkValue(kcalTotalDaily)) * 100).toFixed(2);
+    dailyFat = ((checkValue(fatTotalDaily) * 9) / (checkValue(kcalTotalDaily)) * 100).toFixed(2);
+    dailyCarb = ((checkValue(carbTotalDaily) * 4) / (checkValue(kcalTotalDaily)) * 100).toFixed(2);
 
-    console.log(kcalTotalDaily, "line 435 dailykcal");
+
+    //    console.log(kcalTotalDaily, "line 435 dailykcal");
     $("#total-kcal").html(kcalTotalDaily);
     $("#total-carb").html(carbTotalDaily);
     $("#total-sugar").html(sugarTotalDaily);
@@ -666,6 +761,13 @@ function updateMealTimeNutrition(dataMatches) {
     $("#total-protein").html(proteinTotalDaily);
     $("#total-sodium").html(sodiumTotalDaily);
     $("#total-potassium").html(potassiumTotalDaily);
+
+    $("#daily-protein").html(dailyProtein);
+    $("#daily-fat").html(dailyFat);
+    $("#daily-carb").html(dailyCarb);
+
+
+
 
 };
 //Step 2 - Use function and objects and find the triggers
@@ -905,27 +1007,17 @@ $(document).ready(function () {
             });
         };
     });
-    $('#js-delete-breakfast').on('click', function (event) {
-        //
-        let deleteId = Breakfast;
 
-    });
-    $('#js-delete-lunch').on('click', function (event) {
+    $('#js-delete-all').on('click', function (event) {
         let username = $('#js-username-lunch').val();
-        let deleteMeal = 'lunch';
-
-        if (confirm('Are you sure you want to delete your Lunch Information') === true) {
+        if (confirm('Are you sure you want to delete your meal Information') === true) {
             $.ajax({
                 method: 'DELETE',
-                url: '/delete-nutrition-data/' + deleteMeal + '/' + username,
-                success: getFoodItems
+                url: '/delete-nutrition-data/' + username,
+                success: deleteAllMeals
             });
         };
 
-    });
-    $('#js-delete-dinner').on('click', function (event) {
-        //
-        let deleteId = Dinner;
     });
 
     $('#js-search-ingrediant').on('click', function (event) {
