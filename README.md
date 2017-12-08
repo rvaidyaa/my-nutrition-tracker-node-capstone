@@ -1,18 +1,16 @@
 # My Nutrition Tracker Node Capstone
-Node capstone for the thinkful course. (like line 5).
+Node capstone for the thinkful course.
 
-
-My nutritional tracker is an app designed with cooking and nutrition in mind. You can add custom meals and portions and the application will track the micro and macro nutrients you consume. You can even get weekly and daily totals!
+My nutritional tracker is an app designed with nutrition in mind. You can add custom meals and portions and the application will track the micro and macro nutrients you consume. You can even get daily totals! Uses an external api call to nutritionx to get macro nutrient detials for specific food items from common restaurants.
 
 ## Screenshots
-![Landing page screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/njl01.png)
-![Account setup screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/njl02.png)
-![User homepage screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/njl03.png)
-![Achievement timeline screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/njl04.png)
-![Skills word cloud screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/njl05.png)
+![Landing page screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/landingpage.png)
+![Account setup screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/signup.png)
+![User homepage screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/dailyview.png)
+![User add meal screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/addmealpage.png)
 
-## Use Case
-Not Just Luck is for anyone who struggles with impostor syndrome and would like a centralized place to record and reflect upon their accomplishments and what it took to achieve them. Not Just Luck is like a good friend who reminds you of your strengths when you forget.
+
+
 
 ## Initial UX
 User Stories
@@ -27,7 +25,7 @@ AS A VISITOR, NOT LOGGED IN
 
 AS A LOGGED-IN USER
 
-![UI Flow handwritten draft](https://github.com/Marjona6/not-just-luck-thinkful-full-stack-capstone/blob/master/public/img/wf04.jpg)
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/njl01.png)
 
 ![UI Flow handwritten draft](https://github.com/Marjona6/not-just-luck-thinkful-full-stack-capstone/blob/master/public/img/wf01.jpg)
 ![UI Flow handwritten draft](https://github.com/Marjona6/not-just-luck-thinkful-full-stack-capstone/blob/master/public/img/wf02.jpg)
@@ -69,7 +67,7 @@ Find a working prototype with Node at http://not-just-luck.herokuapp.com/ .
 Find a working prototype with React front end at https://marjona6.github.io/not-just-luck-thinkful-full-stack-capstone-react/build .
 
 ## Functionality
-* When they first set up their account, users are
+
 
 ## Technical
 
@@ -104,13 +102,14 @@ API endpoints for the back end include:
 * POST to '/users/create' for creating a new user
 * POST to '/signin' to sign in an existing user
 * POST to '/new/create' to add an achievement to a user's list of accomplishments
-* PUT to '/achievement/:id' to update an existing achievement
-* GET to '/ingredient/:name' to search external api for user search term
+* PUT to '/allocate-item-to-meal' to categorize a meal to breakfast lunch or dinner
+* GET to '/ingredient/:name' to search external api for user food search term
 * GET to '/nix/:number' when a user selects a food item to add, this makes a external api call to get specifics on the food item
-* DELETE to '/achievement/:id' to delete a single achievement by ID
+* DELETE to '/nix/:number' to delete a single food item from the meal
+* DELETE to /delete-nutrition-data/:username' to delete all a users meals
 
 ## Development Roadmap
 Planned additional features and improvements will allow users to:
-
+* Weekly tracker
 * Change password
 * Update email address
