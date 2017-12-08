@@ -63,10 +63,7 @@ When I add meals:
 
 
 ## Working Prototype
-Find a working prototype with Node at http://not-just-luck.herokuapp.com/ .
-Find a working prototype with React front end at https://marjona6.github.io/not-just-luck-thinkful-full-stack-capstone-react/build .
-
-## Functionality
+Find a working prototype with Node at http://my-nutrition-tracker-node.herokuapp.com/ .
 
 
 ## Technical
@@ -77,7 +74,6 @@ Find a working prototype with React front end at https://marjona6.github.io/not-
 <li>CSS3</li>
 <li>JavaScript</li>
 <li>jQuery</li>
-<li>React</li>
 </ul>
 <h3>Back End</h3>
 <ul>
