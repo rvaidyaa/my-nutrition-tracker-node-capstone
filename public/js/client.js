@@ -426,7 +426,7 @@ function getFoodItems() {
 }
 // function to 0 out the values when delete all is run
 function deleteAllMeals() {
-    //create an empty variable to store one LI for each of the results
+    //zero lunch info
     $("#js-total-kcal-lunch").html('0');
     $("#js-total-carb-lunch").html('0');
     $("#js-total-sugar-lunch").html('0');
@@ -448,7 +448,7 @@ function deleteAllMeals() {
     $("#js-lunch-protein-macro").html('0');
     $("#js-lunch-fat-macro").html('0');
     $("#js-lunch-carb-macro").html('0');
-
+    // zero dinner info
     $("#js-total-kcal-dinner").html('0');
     $("#js-total-carb-dinner").html('0');
     $("#js-total-sugar-dinner").html('0');
@@ -470,28 +470,28 @@ function deleteAllMeals() {
     $("#js-dinner-protein-macro").html('0');
     $("#js-dinner-fat-macro").html('0');
     $("#js-dinner-carb-macro").html('0');
+    //zero breakfast info
+    $("#js-total-kcal-breakfast").html('0');
+    $("#js-total-carb-breakfast").html('0');
+    $("#js-total-sugar-breakfast").html('0');
+    $("#js-total-fiber-breakfast").html('0');
+    $("#js-total-fat-breakfast").html('0');
+    $("#js-total-protein-breakfast").html('0');
+    $("#js-total-sodium-breakfast").html('0');
+    $("#js-total-potassium-breakfast").html('0');
 
-    $("#js-total-kcal-dinner").html('0');
-    $("#js-total-carb-dinner").html('0');
-    $("#js-total-sugar-dinner").html('0');
-    $("#js-total-fiber-dinner").html('0');
-    $("#js-total-fat-dinner").html('0');
-    $("#js-total-protein-dinner").html('0');
-    $("#js-total-sodium-dinner").html('0');
-    $("#js-total-potassium-dinner").html('0');
+    $("#js-percent-kcal-breakfast").html('0');
+    $("#js-percent-carb-breakfast").html('0');
+    $("#js-percent-sugar-breakfast").html('0');
+    $("#js-percent-fiber-breakfast").html('0');
+    $("#js-percent-fat-breakfast").html('0');
+    $("#js-percent-protein-breakfast").html('0');
+    $("#js-percent-sodium-breakfast").html('0');
+    $("#js-percent-potassium-breakfast").html('0');
 
-    $("#js-percent-kcal-dinner").html('0');
-    $("#js-percent-carb-dinner").html('0');
-    $("#js-percent-sugar-dinner").html('0');
-    $("#js-percent-fiber-dinner").html('0');
-    $("#js-percent-fat-dinner").html('0');
-    $("#js-percent-protein-dinner").html('0');
-    $("#js-percent-sodium-dinner").html('0');
-    $("#js-percent-potassium-dinner").html('0');
-
-    $("#js-dinner-protein-macro").html('0');
-    $("#js-dinner-fat-macro").html('0');
-    $("#js-dinner-carb-macro").html('0');
+    $("#js-breakfast-protein-macro").html('0');
+    $("#js-breakfast-fat-macro").html('0');
+    $("#js-breakfast-carb-macro").html('0');
 
     $("#total-kcal").html('0');
     $("#total-carb").html('0');

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <!-- b/c style css reads the font-->
@@ -17,7 +18,7 @@
         An Error Has Occured
     </div>
     <main class="landing">
-        <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with nutrition in mind. It is for busy professionals who eat at restaurants and want to track their nutrients.
+        <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with nutrition in mind. It is for busy professionals who eat at restaurants and want to track their daily macro nutrients.
         </div>
         <form id='login-form'>
             <a class="user-input" id='js-create-account'>Create Account</a>
@@ -46,58 +47,58 @@
     </main>
     <main class="nutrient-profile">
         <h1 class='current-food-item'></h1>
-        <form action="">
+        <form class="button-background">
             <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
         </form>
-        <div role="weekly-totals">
+        <div class="stored-recipes">
+            <div role="weekly-totals">
+                <span class='totals'>Nutrient</span>
+                <span class='totals'>Total</span>
+                <span class='totals'>%/Daily</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys'>Kcal</span><br>
+                <span class='weeklys'>Carb</span><br>
+                <span class='weeklys'>Sugar</span><br>
+                <span class='weeklys'>Fiber</span><br>
+                <span class='weeklys'>Fat</span><br>
+                <span class='weeklys'>Protein</span><br>
+                <span class='weeklys'>Sodium</span><br>
+                <span class='weeklys'>Potassium</span><br>
 
-            <span class='totals'>Nutrient</span>
-            <span class='totals'>Total</span>
-            <span class='totals'>%/Daily</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-kcal'></span><br>
+                <span class='weeklys' id='js-carb'></span><br>
+                <span class='weeklys' id='js-sugar'></span><br>
+                <span class='weeklys' id='js-fiber'></span><br>
+                <span class='weeklys' id='js-fat'></span><br>
+                <span class='weeklys' id='js-protein'></span><br>
+                <span class='weeklys' id='js-sodium'></span><br>
+                <span class='weeklys' id='js-potassium'></span><br>
+
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-kcal-p'>85</span><br>
+                <span class='weeklys' id='js-carb-p'>98</span><br>
+                <span class='weeklys' id='js-sugar-p'>66</span><br>
+                <span class='weeklys' id='js-fiber-p'>55</span><br>
+                <span class='weeklys' id='js-fat-p'>62</span><br>
+                <span class='weeklys' id='js-protein-p'>15</span><br>
+                <span class='weeklys' id='js-sodium-p'>85</span><br>
+                <span class='weeklys' id='js-potassium-p'>112</span><br>
+
+            </div>
+            <div role='macro-nutrient-spread' class='macro-div'>
+                <span class='macro-spread'>Protein</span>
+                <span class='macro-spread'>Fat</span>
+                <span class='macro-spread'>Carb</span>
+
+            </div>
+            <span class='macro-spread' id='js-macro-protein'>20%</span>
+            <span class='macro-spread' id='js-macro-fat'>60%</span>
+            <span class='macro-spread' id='js-macro-carb'>15%</span>
         </div>
-        <div class="three-colums">
-            <span class='weeklys'>Kcal</span><br>
-            <span class='weeklys'>Carb</span><br>
-            <span class='weeklys'>Sugar</span><br>
-            <span class='weeklys'>Fiber</span><br>
-            <span class='weeklys'>Fat</span><br>
-            <span class='weeklys'>Protein</span><br>
-            <span class='weeklys'>Sodium</span><br>
-            <span class='weeklys'>Potassium</span><br>
-
-        </div>
-        <div class="three-colums">
-            <span class='weeklys' id='js-kcal'></span><br>
-            <span class='weeklys' id='js-carb'></span><br>
-            <span class='weeklys' id='js-sugar'></span><br>
-            <span class='weeklys' id='js-fiber'></span><br>
-            <span class='weeklys' id='js-fat'></span><br>
-            <span class='weeklys' id='js-protein'></span><br>
-            <span class='weeklys' id='js-sodium'></span><br>
-            <span class='weeklys' id='js-potassium'></span><br>
-
-        </div>
-        <div class="three-colums">
-            <span class='weeklys' id='js-kcal-p'>85</span><br>
-            <span class='weeklys' id='js-carb-p'>98</span><br>
-            <span class='weeklys' id='js-sugar-p'>66</span><br>
-            <span class='weeklys' id='js-fiber-p'>55</span><br>
-            <span class='weeklys' id='js-fat-p'>62</span><br>
-            <span class='weeklys' id='js-protein-p'>15</span><br>
-            <span class='weeklys' id='js-sodium-p'>85</span><br>
-            <span class='weeklys' id='js-potassium-p'>112</span><br>
-
-        </div>
-        <div role='macro-nutrient-spread' class='macro-div'>
-            <span class='macro-spread'>Protein</span>
-            <span class='macro-spread'>Fat</span>
-            <span class='macro-spread'>Carb</span>
-
-        </div>
-        <span class='macro-spread' id='js-macro-protein'>20%</span>
-        <span class='macro-spread' id='js-macro-fat'>60%</span>
-        <span class='macro-spread' id='js-macro-carb'>15%</span>
-
     </main>
     <main class="weekly">
         <h1>Total Meal Nutrition</h1>
@@ -123,53 +124,54 @@
             </section>
             <!-- Change from dropdown to input for grams-->
         </form>
-        <div role="weekly-totals">
-            <span class='totals'>Nutrient</span>
-            <span class='totals'>Total</span>
-            <span class='totals'>%/Daily</span>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys'>Kcal</span><br>
-            <span class='weeklys'>Carb</span><br>
-            <span class='weeklys'>Sugar</span><br>
-            <span class='weeklys'>Fiber</span><br>
-            <span class='weeklys'>Fat</span><br>
-            <span class='weeklys'>Protein</span><br>
-            <span class='weeklys'>Sodium</span><br>
-            <span class='weeklys'>Potassium</span><br>
+        <div class="stored-recipes">
+            <div role="weekly-totals">
+                <span class='totals'>Nutrient</span>
+                <span class='totals'>Total</span>
+                <span class='totals'>%/Daily</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys'>Kcal</span><br>
+                <span class='weeklys'>Carb</span><br>
+                <span class='weeklys'>Sugar</span><br>
+                <span class='weeklys'>Fiber</span><br>
+                <span class='weeklys'>Fat</span><br>
+                <span class='weeklys'>Protein</span><br>
+                <span class='weeklys'>Sodium</span><br>
+                <span class='weeklys'>Potassium</span><br>
 
-        </div>
-        <div class="three-colums">
-            <span class='weeklys' id='js-total-kcal'>13500 Kcal</span><br>
-            <span class='weeklys' id='js-total-carb'>1200 G</span><br>
-            <span class='weeklys' id='js-total-sugar'>100 G</span><br>
-            <span class='weeklys' id='js-total-fiber'>100 G</span><br>
-            <span class='weeklys' id='js-total-fat'>2000 G</span><br>
-            <span class='weeklys' id='js-total-protein'>1500 G</span><br>
-            <span class='weeklys' id='js-total-sodium'>10000 MG</span><br>
-            <span class='weeklys' id='js-total-potassium'>6000 MG</span>
-        </div>
-        <div class="three-colums">
-            <span class='weeklys' id='js-percent-kcal'>85</span><br>
-            <span class='weeklys' id='js-percent-carb'>98</span><br>
-            <span class='weeklys' id='js-percent-sugar'>66</span><br>
-            <span class='weeklys' id='js-percent-fiber'>55</span><br>
-            <span class='weeklys' id='js-percent-fat'>62</span><br>
-            <span class='weeklys' id='js-percent-protein'>15</span><br>
-            <span class='weeklys' id='js-percent-sodium'>85</span><br>
-            <span class='weeklys' id='js-percent-potassium'>112</span><br>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-total-kcal'>13500 Kcal</span><br>
+                <span class='weeklys' id='js-total-carb'>1200 G</span><br>
+                <span class='weeklys' id='js-total-sugar'>100 G</span><br>
+                <span class='weeklys' id='js-total-fiber'>100 G</span><br>
+                <span class='weeklys' id='js-total-fat'>2000 G</span><br>
+                <span class='weeklys' id='js-total-protein'>1500 G</span><br>
+                <span class='weeklys' id='js-total-sodium'>10000 MG</span><br>
+                <span class='weeklys' id='js-total-potassium'>6000 MG</span>
+            </div>
+            <div class="three-colums">
+                <span class='weeklys' id='js-percent-kcal'>85</span><br>
+                <span class='weeklys' id='js-percent-carb'>98</span><br>
+                <span class='weeklys' id='js-percent-sugar'>66</span><br>
+                <span class='weeklys' id='js-percent-fiber'>55</span><br>
+                <span class='weeklys' id='js-percent-fat'>62</span><br>
+                <span class='weeklys' id='js-percent-protein'>15</span><br>
+                <span class='weeklys' id='js-percent-sodium'>85</span><br>
+                <span class='weeklys' id='js-percent-potassium'>112</span><br>
 
-        </div>
-        <div role='macro-nutrient-spread' class='macro-div'>
-            <span class='macro-spread'>Protein</span>
-            <span class='macro-spread'>Fat</span>
-            <span class='macro-spread'>Carb</span>
+            </div>
+            <div role='macro-nutrient-spread' class='macro-div'>
+                <span class='macro-spread'>Protein</span>
+                <span class='macro-spread'>Fat</span>
+                <span class='macro-spread'>Carb</span>
 
+            </div>
+            <span class='macro-spread' id='js-macro-protein-total'>20%</span>
+            <span class='macro-spread' id='js-macro-fat-total'>60%</span>
+            <span class='macro-spread' id='js-macro-carb-total'>15%</span>
         </div>
-        <span class='macro-spread' id='js-macro-protein-total'>20%</span>
-        <span class='macro-spread' id='js-macro-fat-total'>60%</span>
-        <span class='macro-spread' id='js-macro-carb-total'>15%</span>
-
     </main>
     <main class="saved-recipes">
         <h1>Daily View<br>
@@ -444,7 +446,17 @@
         <!--   here-->
     </main>
     <footer>
-        'Created by Rahul Vaidya'
+        <ul>
+            <li>
+                <p>&#xa9; 2017 Rahul Vaidya</p>
+            </li>
+            <li>
+                <a href="https://github.com/rvaidyaa" title="Check out my code on GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
+            </li>
+            <li>
+                <a href="mailto:rvaidyaa@gmail.com?Subject=Hello" title="Send me an email"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            </li>
+        </ul>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src='js/client.js'></script>
