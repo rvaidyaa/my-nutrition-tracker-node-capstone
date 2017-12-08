@@ -25,11 +25,13 @@ AS A VISITOR, NOT LOGGED IN
 
 AS A LOGGED-IN USER
 
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/signup.jpg)
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/landing.jpg)
 
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailyview.jpg)
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/nutrientprofile.jpg)
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/singup.jpg)
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/mainpage.jpg)
 ![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/addmeal.jpg)
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailyview.jpg)
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailycontinued.jpg)
 //
 ## Initial UX (mine)
 User Stories
