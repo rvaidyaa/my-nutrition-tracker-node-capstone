@@ -17,22 +17,20 @@ User Stories
 AS A VISITOR, NOT LOGGED IN
 
 * As an initial visitor to the page, I want to land on the web page and see what the page is about so I can understand what the app is and does and decide whether or not to create an account to be able to use the app.
-* //!!As a visitor, I want to create a new account so that I can use the app.
+
+* As a visitor, I want to create a new account so that I can use the app.
 (LANDING PAGE--wireframe will have title, logo, a few details about logging in and what the app is about)
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/landing.jpg)
 
 * As a visitor who has already created an account, I want to log in so that I can access my account.
 
-AS A LOGGED-IN USER
-
 ![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/landing.jpg)
+## Initial Wireframe
 
 ![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/signup.jpg)
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/mainpage.jpg)
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/addmeal.jpg)
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailyview.jpg)
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailycontinued.jpg)
-//
+
+
+AS A LOGGED-IN USER
+
 ## Initial UX (mine)
 User Stories
 
@@ -40,7 +38,6 @@ As a visitor, not logged in,
 
 *As a visitor, I want to see what the application is about
 *As a visitor I want to see if i am interested in making an account
-*As a visitor who has made an account I would like to sign in to access my account.
 *As a visitor, I want a simple sign up page.
 
 As a logged in user
@@ -49,6 +46,7 @@ As a logged in user
 *As a user I would like a overall view of what I eat
 *As a user I want to see the macro and micro nutrient totals each day
 *As a user I want a link to a weekly summary
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/mainpage.jpg)
 
 When I add meals:
 
@@ -56,12 +54,15 @@ When I add meals:
 *As a user, I want to save my recipes
 *As a user, I want to be able to upload a picture of the recipe
 *As a user, I want to be able to view the nutrition profile of the meal in my saved recipes
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/addmeal.jpg)
 
 *As a user, when i click on the nutrition profile i want a it easily readible with most relevant information at the top.
 *As a user, when i view my weekly totals I want averages
 *As a user I want my averages displayed in my weekly totals
 *As a user I want the micro/macro nutrients available
 
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailyview.jpg)
+![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailycontinued.jpg)
 
 
 ## Working Prototype
