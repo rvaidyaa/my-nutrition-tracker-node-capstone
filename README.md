@@ -24,7 +24,7 @@ AS A VISITOR, NOT LOGGED IN
 * As a visitor who has already created an account, I want to log in so that I can access my account.
 
 ![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/landing.jpg)
-## Initial Wireframe
+
 
 ![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/signup.jpg)
 
