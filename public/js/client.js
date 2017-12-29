@@ -880,6 +880,7 @@ $(document).ready(function () {
 
             })
             .fail(function (jqXHR, error, errorThrown) {
+                //client auto generates error when we miss
                 console.log(jqXHR);
                 console.log(error);
                 console.log(errorThrown);

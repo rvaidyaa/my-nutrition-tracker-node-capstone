@@ -1,0 +1,82 @@
+Hi Rahul,
+
+Thanks for submitting your app for review. 
+
+Overall, it is my opinion that your app needs more work before it will help you with potential employers. The app is simply too difficult to use in its current form due to design issues and lack of guidance for the user. As a result, I am marking this app as "Not Available for Official Scoring" and encourage you to resubmit after addressing the following notes.
+
+I've included detailed feedback and suggestions below, along with screenshots, which I hope will be helpful. 
+
+Please discuss the following notes with your mentor, and consider reaching out for support from a Thinkful designer to assist you. Your mentor and/or PM can connect you. Also consider looking at existing nutrition tracking apps for inspiration and patterns that you can use in yoru app.
+
+Your screenshots are available at https://www.dropbox.com/sh/2545yy3p9ypjnsb/AACBI_oldkPkO5aIGjSj2fLia?dl=0. Please download them within one week, as I will remove them after that time.
+
+If you'd like to discuss anything in more detail, you're welcome to get in touch with me via email at jharris@thinkful.com, or on Slack at @joshua_harris.
+
+All the best,
+🌿 Joshua
+
+# Concept
+
+This app scores low on concept because there are already many existing nutrition trackers. Are there any features of your app that are not implemented in popular apps?
+
+# Content
+
+- Screenshots on GitHub README are broken. Wireframes are in horizontal orientation. Recommend changing to vertical orientation.
+
+## Content: Landing Page
+
+- ✅ Who it's for is clear.
+- ⚠️ What it does.
+	- I don't get a sense from the landing page what the features of your app are. Recommend adding 1-3 feature sections which show the user what they will gain by using your app. Examples:
+		- [Twist](https://twistapp.com)
+		- [Meetup](https://www.meetup.com)
+- ⚠️ Why I should use it.
+	- Your copy implies that I would want to "track my daily macro nutrients." Do you think your target audience ("busy professionals who eat at restaurants") will already understand how this would benefit them? Recommend adding some copy describing the benefits I would gain from tracking my daily nutrients.
+
+## Content: Application
+
+- There is no explanatory copy or content in the application, so I'm left to try and figure everything out for myself.
+
+# Responsiveness
+
+## Responsiveness: Landing Page
+
+- Elements do not change size or orientation on Chrome Mobile Device Lab. Recommend examining your site meta tags and media queries, and testing on a mobile device. (Screenshot 2)
+
+## Responsiveness: Application
+
+- Fields and numbers are much too small to read on mobile. (Screenshot 4)
+
+# Design/UX
+
+## Design/UX: Landing Page
+
+- Page title is "Document." Recommend changing to name of app.
+- Font size, color, button size, etc. are all very uniform. For instance, the "Create Account" button looks the same as the username and password fields. (Screenshot 1)
+- There is no feedback from hovering over buttons on desktop. Recommend adding a highlight and changing cursor to pointer when hovering on a button, to indicate that it is clickable.
+- Overall, I recommend modifying the landing page and sign up form to incorporate popular patterns. This will help users navigate your page. See [Mobile Patterns](http://www.mobile-patterns.com/sign-up-flows) and your favorite apps for examples.
+- Consider the journey you want a user to take in your app - what you want them to do first, second, etc. -  and guide them using elements with varied size, color, and position. Elements you want the user to focus on first can be larger, more colorful, and closer to the center. Less important elements can be less colorful and smaller. Examples:
+	- [Flickr](https://www.flickr.com)
+	- [Duolingo](https://www.duolingo.com)
+	- [Slack](https://slack.com)
+- Fields on sign up form are not labeled. Recommend adding labels so users know what to type in.
+- Message on successful sign up disappears before I can read it, and is red which makes it look like an error.
+
+## Design/UX: Application
+
+- The "Logout" button is actually the most tempting action to take first in the current design because it is on the left (users generally read left-to-right) and colorful. Recommend making this less prominent. Again, see your favorite app dashboards for examples.
+- Logging in takes me to a page with two buttons. Consider the user's journey again, and bring me to what you believe is the most useful information first rather than presenting me with a choice ("Logout" or "Daily Tracker").
+- I find the "Daily Tracker" very confusing. All the fields look the same and I'm not sure what I should do first. Recommend adding some guidance for users in the form of explanation copy and varying color/size. See [YNAB](http://youneedabudget.com) for an example of an app that handles large amounts of data well and provides lots of guidance for the user.
+- Overall there is just not enough feedback to guide me through using your app, so I can't receive the benefits of using it. I recommend discussing this with your mentor, reaching out for design review from one of the Thinkful designers, and attending UX-related QA sessions.
+- I'm unclear what the nutrient labels and headings mean, or why I would pay attention to them. Recommend adding some explanatory copy.
+
+# Functionality
+
+## Functionality Tested
+
+- ✅ Sign In as Demo User
+- ⚠️ Sign Up
+	- Could not test, as I cannot sign in. See note below.
+- 🚫 Sign In as Custom User
+	- I cannot type into login field on sign in page. Input remains stuck as "testuser."
+- ✅ Sign In as Demo User

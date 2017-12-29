@@ -3,11 +3,13 @@ Node capstone for the thinkful course.
 
 My nutritional tracker is an app designed with nutrition in mind. You can add custom meals and portions and the application will track the micro and macro nutrients you consume. You can even get daily totals! Uses an external api call to nutritionx to get macro nutrient detials for specific food items from common restaurants.
 
+https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/landingpage.png
+
 ## Screenshots
-![Landing page screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/landingpage.png)
-![Account setup screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/signup.png)
-![User homepage screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/dailyview.png)
-![User add meal screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/public/img/addmealpage.png)
+![Landing page screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/landingpage.png)
+![Account setup screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/signup.png)
+![User homepage screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/dailyview.png)
+![User add meal screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/addmealpage.png)
 
 
 
