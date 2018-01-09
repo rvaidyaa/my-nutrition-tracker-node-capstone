@@ -71,26 +71,26 @@ h2 {
 
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: firebrick;
-    text-shadow: 0px 0px 6px black;
+    color: black;
+    /*    text-shadow: 0px 0px 6px black;*/
 }
 
 ::-moz-placeholder {
     /* Firefox 19+ */
-    color: firebrick;
-    text-shadow: 0px 0px 6px black;
+    color: black;
+    /*    text-shadow: 0px 0px 6px black;*/
 }
 
 :-ms-input-placeholder {
     /* IE 10+ */
-    color: firebrick;
-    text-shadow: 0px 0px 6px black;
+    color: black;
+    /*    text-shadow: 0px 0px 6px black;*/
 }
 
 :-moz-placeholder {
     /* Firefox 18- */
-    color: firebrick;
-    text-shadow: 0px 0px 6px black;
+    color: black;
+    /*    text-shadow: 0px 0px 6px black;*/
 }
 
 .column {
@@ -649,7 +649,7 @@ footer a:hover {
     }
     body {
         color: red;
-        font-size: 12px;
+        font-size: 14px;
     }
     button {
         font-size: 12px;
@@ -766,7 +766,7 @@ footer a:hover {
     }
     .user-button,
     user-input {
-        font-size: 10px;
+        font-size: 12px;
         width: 80%;
     }
 }
@@ -777,6 +777,19 @@ footer a:hover {
 @media only screen and (max-width: 480px) {
     body {
         color: green;
+    }
+    .macro-spread,
+    .totals,
+    .weeklys,
+    .user-button,
+    .user-input {
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 18px;
     }
 }
 
