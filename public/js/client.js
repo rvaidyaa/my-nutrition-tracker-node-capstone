@@ -5,7 +5,7 @@ var loggedInUser = "";
 function displayErrors(errorText) {
     $('.display-error-container').show();
     $('.display-error-container').html(errorText);
-    $('.display-error-container').fadeOut(5000);
+    $('.display-error-container').fadeOut(9000);
 }
 
 function checkLogedInUser(nowUnixTime, loggedInUser) {
@@ -115,7 +115,6 @@ function ajaxNutritionSearch(searchTerm) {
 }
 
 function ajaxNutritionFind(nixId) {
-
     $.ajax({
             type: "GET",
             url: "/nix/" + nixId,
@@ -889,9 +888,10 @@ $(document).ready(function () {
 
     // User FLOW 2: Existing User signs in on landing page,
     $('#login-form').on('submit keypress', function (event) {
-        event.preventDefault();
+
         if (event.type === 'keypress' && event.which === 13 || event.type === 'submit') {
             //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
+            event.preventDefault();
             var inputUname = $('#login-username-form').val();
             var inputPw = $('#login-password-form').val();
             //            console.log(inputUname, inputPw);
@@ -911,11 +911,11 @@ $(document).ready(function () {
                 $('.add-recipe').hide();
                 $('.nutrient-profile').hide();
                 $('.weekly').hide();
-                $('.daily').hide();
-                $('.saved-recipes').hide();
                 $('.signup').hide();
                 $('.landing').hide();
-                $('.main-page').show();
+                $('.main-page').hide();
+                $('.saved-recipes').show();
+                $('.daily').show();
                 getFoodItems();
             };
         };
@@ -951,12 +951,12 @@ $(document).ready(function () {
         event.preventDefault();
         $('.landing').hide();
         $('.add-recipe').hide();
-        $('.daily').hide();
-        $('.saved-recipes').hide();
         $('.signup').hide();
         $('.weekly').hide();
         $('.nutrient-profile').hide();
-        $('.main-page').show();
+        $('.main-page').hide();
+        $('.daily').show();
+        $('.saved-recipes').show();
     });
     //Jump to saved meals -main flow Look at this one
     $('#js-saved-meals').on('click', function (event) {

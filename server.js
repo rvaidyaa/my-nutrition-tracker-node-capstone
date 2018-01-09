@@ -304,18 +304,6 @@ app.post('/food-log/food-item', (req, res) => {
     let satFat = req.body.satFat;
     let meal = "";
     let username = req.body.username;
-
-    //    console.log(name)
-    //    console.log(calories);
-    //    console.log(fiber);
-    //    console.log(potassium);
-    //    console.log(totalFat);
-    //    console.log(carbs);
-    //    console.log(protein);
-    //    console.log(sugar);
-    //    console.log(sodium);
-    //    console.log(satFat);
-
     foodLog.create({
         name,
         calories,
@@ -341,13 +329,9 @@ app.post('/food-log/food-item', (req, res) => {
         }
     });
 });
-
-
 app.put('/allocate-item-to-meal', function (req, res) {
-
     let mealTime = req.body.mealTime;
     let itemsId = req.body.itemsId;
-
     let itemsIdObjt = itemsId.split(",");
     //    console.log(itemsIdObjt);
 
@@ -368,24 +352,6 @@ app.put('/allocate-item-to-meal', function (req, res) {
                 });
         }
     });
-
-    //    let toUpdate = {};
-    //    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy'];
-    //    updateableFields.forEach(function (field) {
-    //        if (field in req.body) {
-    //            toUpdate[field] = req.body[field];
-    //        }
-    //    });
-    //    Achievement
-    //        .findByIdAndUpdate(req.params.id, {
-    //            $set: toUpdate
-    //        }).exec().then(function (achievement) {
-    //            return res.status(204).end();
-    //        }).catch(function (err) {
-    //            return res.status(500).json({
-    //                message: 'Internal Server Error'
-    //            });
-    //        });
 });
 
 app.delete('/nix/:number', function (req, res) { //make better name

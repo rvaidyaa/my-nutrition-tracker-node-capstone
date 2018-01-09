@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Landing Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <header class='title-header'>
         <h1>My nutritional Tracker!</h1>
     </header>
@@ -18,38 +19,44 @@
         An Error Has Occured
     </div>
     <main class="landing">
-        <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with nutrition in mind. It is for busy professionals who eat at restaurants and want to track their daily macro nutrients.
+        <div class="catch" role='catch phrase'>My nutritional tracker is an app designed with nutrition in mind. It is for busy professionals who eat at restaurants and want to track their daily macro nutrients. By tracking your calories and other nutrients you can make sure your hitting your goals to gain/lose or maintain weight. Create an account by clicking the "Create Account" Button.<br>
+            <a class="user-button" id='js-create-account'>Create Account</a>
         </div>
-        <form id='login-form'>
-            <a class="user-input" id='js-create-account'>Create Account</a>
-            <input type='text' class='user-input' id='login-username-form' value='testuser'>
-            <input type='password' class='user-input' id='login-password-form' value='123'>
-            <input type="submit" class="user-input" value='Login'>
+        <br>
+        <div class="catch" id='js-create-account'>
+            <h2>Already Have an account? Sign in below! </h2>
+        </div>
+        <form id='login-form' action="" class='signup-form'>
+            <input type='text' class='user-input' id='login-username-form' placeholder='username'>
+            <input type='password' class='user-input' id='login-password-form' placeholder='password'>
+            <input type="submit" class="user-button" value='Login'>
         </form>
+
     </main>
     <main class="signup" id='js-signup'>
         <h1>Sign up for my Nutritional Tracker</h1>
         <form action="" id="register-form" class='signup-form'>
-            <input type='text' placeholder="Username" class='user-input' id='register-username-input' value='testuser'>
-            <input type='password' placeholder='Password' class='user-input' id='register-password-input' value='123'>
-            <input type='password' placeholder='Repeat password' class='user-input' id='register-verify-password-input' value='123'>
-            <input type="submit" class="user-input" value='Sign up!'>
+            <input type='text' placeholder="Username" class='user-input' id='register-username-input' value=''>
+            <input type='password' placeholder='Password' class='user-input' id='register-password-input' value=''>
+            <input type='password' placeholder='Repeat password' class='user-input' id='register-verify-password-input' value=''>
+            <input type="submit" class="user-button" value='Sign up!'>
         </form>
     </main>
     <main class="add-recipe" id='js-add-recipe'>
-        <h1>Add a Meal</h1>
+        <h1>Add a Meal</h1><br>
+        <div class="catch" role='catch phrase'>In the search field below, search a food item such as big mac and press the search button. Select the best fit, and below you will get a nutrient breakdown. Press the - button to remove items or use the dropdown menu to save the meal to the corresponding spot. <br>
+        </div>
         <form action="" class="new-recipe">
-            <input type='text' placeholder="Search Food item" class='ingrediant-input' id='js-search-field' value='Big Mac'>
-            <input type="submit" class="user-input" value='Search' id='js-search-ingrediant'>
+            <input type='text' placeholder="Search Food item" class='user-input' id='js-search-field' value='Big Mac'>
+            <input type="submit" class="user-button" value='Search' id='js-search-ingrediant'>
         </form>
         <ul class="api-results"></ul>
 
     </main>
     <main class="nutrient-profile">
-        <h1 class='current-food-item'></h1>
-        <form class="button-background">
-            <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
-        </form>
+        <h1 class='current-food-item'></h1><br>
+        <div class="catch" role='catch phrase'>Nutrient breakdown for searched item by name, total amount and percentage of daily requirements met. <br>
+        </div>
         <div class="stored-recipes">
             <div role="weekly-totals">
                 <span class='totals'>Nutrient</span>
@@ -58,13 +65,13 @@
             </div>
             <div class="three-colums">
                 <span class='weeklys'>Kcal</span><br>
-                <span class='weeklys'>Carb</span><br>
-                <span class='weeklys'>Sugar</span><br>
-                <span class='weeklys'>Fiber</span><br>
-                <span class='weeklys'>Fat</span><br>
-                <span class='weeklys'>Protein</span><br>
-                <span class='weeklys'>Sodium</span><br>
-                <span class='weeklys'>Potassium</span><br>
+                <span class='weeklys'>Carb(g)</span><br>
+                <span class='weeklys'>Sugar(g)</span><br>
+                <span class='weeklys'>Fiber(g)</span><br>
+                <span class='weeklys'>Fat(g)</span><br>
+                <span class='weeklys'>Protein(g)</span><br>
+                <span class='weeklys'>Sodium(mg)</span><br>
+                <span class='weeklys'>Potassium(mg)</span><br>
 
             </div>
             <div class="three-colums">
@@ -109,21 +116,18 @@
             <div role="daily totals">
                 <div class="dropdown">
                     <input type="hidden" class="allocateItemToMeal" value="">
-                    <select class="dropdown-content dropbtn" id='js-dropdown-value'>
+                    <select class="dropdown-content dropbtn user-input" id='js-dropdown-value'>
                         <option  value='breakfast'>Breakfast</option>
                         <option  value='lunch'>Lunch</option>
                         <option  value='dinner'>Dinner</option>
                     </select>
-                    <input type="submit" class="add-item" id='js-save-meal' value='Save Meal'>
+                    <input type="submit" class="user-button" id='js-save-meal' value='Save Meal'>
+                    <input type="submit" class="user-button go-to-main" id='js-homepage' value='Home Page'>
                 </div>
             </div>
-            <section class="two-columns">
-                <form action="">
-                    <input type="submit" class="add-item go-to-main" id='js-homepage' value='Home Page'>
-                </form>
-            </section>
-            <!-- Change from dropdown to input for grams-->
-        </form>
+        </form><br>
+        <div class="catch" role='catch phrase'>Nutrient breakdown for entire meal by total amount and percentage of daily requirements met. <br>
+        </div>
         <div class="stored-recipes">
             <div role="weekly-totals">
                 <span class='totals'>Nutrient</span>
@@ -132,13 +136,13 @@
             </div>
             <div class="three-colums">
                 <span class='weeklys'>Kcal</span><br>
-                <span class='weeklys'>Carb</span><br>
-                <span class='weeklys'>Sugar</span><br>
-                <span class='weeklys'>Fiber</span><br>
-                <span class='weeklys'>Fat</span><br>
-                <span class='weeklys'>Protein</span><br>
-                <span class='weeklys'>Sodium</span><br>
-                <span class='weeklys'>Potassium</span><br>
+                <span class='weeklys'>Carb(g)</span><br>
+                <span class='weeklys'>Sugar(g)</span><br>
+                <span class='weeklys'>Fiber(g)</span><br>
+                <span class='weeklys'>Fat(g)</span><br>
+                <span class='weeklys'>Protein(g)</span><br>
+                <span class='weeklys'>Sodium(mg)</span><br>
+                <span class='weeklys'>Potassiu(mg)</span><br>
 
             </div>
             <div class="three-colums">
@@ -174,16 +178,21 @@
         </div>
     </main>
     <main class="saved-recipes">
-        <h1>Daily View<br>
+        <h1>Home Page<br>
         </h1>
-        <div class='button-background'>
-            <button class="results" id=js-add-meal>Add New Meal</button>
-            <input type="submit" class="add-item go-to-main" id="js-homepage" value="Home Page">
-            <input type="submit" class="add-item" id="js-delete-all" value="Delete Meals">
+        <br>
+        <div class="catch" role='catch phrase'>Welcome to the main screen of my Nutritional tracker. Below you can see your saved totals for each meal of the day as well as the total for the entire day at the bottom. Click Add New Meal to begin saving meals for breakfast lunch or dinner!<br>
         </div>
-        <!--        <div class="save">-->
+        <div class='button-background'>
+            <button class="user-button" id=js-add-meal>Add New Meal</button>
+            <input type="submit" class="user-button" id="js-delete-all" value="Delete All Meals">
+            <button class='user-button' id='js-logout-button'>Logout</button>
+        </div><br>
+        <div class="catch" role='catch phrase'>Below you will find the protien carb and fat percentage breakdown for each meal if you added a meal as well as macro nutrient breakdown by name, how much of the nutrient is in the food and what % of your daily requirements it meets. <br>
+        </div>
         <div class="stored-recipes">
             <span class="title">Breakfast</span><br>
+
             <div>
                 <input type="hidden" id="js-username-breakfast" value=''>
             </div>
@@ -191,9 +200,9 @@
             <span class="macro-spread" id='js-breakfast-fat'>F %</span>
             <span class="macro-spread" id='js-breakfast-carb'>C %</span>
             <br>
-            <span class="macro-spread" id='js-breakfast-protein-macro'>25% </span>
-            <span class="macro-spread" id='js-breakfast-fat-macro'>50% </span>
-            <span class="macro-spread" id='js-breakfast-carb-macro'>15% </span>
+            <span class="macro-spread" id='js-breakfast-protein-macro'>0% </span>
+            <span class="macro-spread" id='js-breakfast-fat-macro'>0% </span>
+            <span class="macro-spread" id='js-breakfast-carb-macro'>0% </span>
             <div role="weekly-totals">
                 <span class='totals'>Nutrient</span>
                 <span class='totals'>Total</span>
@@ -201,13 +210,13 @@
             </div>
             <div class="three-colums">
                 <span class='weeklys'>Kcal</span><br>
-                <span class='weeklys'>Carb</span><br>
-                <span class='weeklys'>Sugar</span><br>
-                <span class='weeklys'>Fiber</span><br>
-                <span class='weeklys'>Fat</span><br>
-                <span class='weeklys'>Protein</span><br>
-                <span class='weeklys'>Sodium</span><br>
-                <span class='weeklys'>Potassium</span><br>
+                <span class='weeklys'>Carb(g)</span><br>
+                <span class='weeklys'>Sugar(g)</span><br>
+                <span class='weeklys'>Fiber(g)</span><br>
+                <span class='weeklys'>Fat(g)</span><br>
+                <span class='weeklys'>Protein(g)</span><br>
+                <span class='weeklys'>Sodium(mg)</span><br>
+                <span class='weeklys'>Potassium(mg)</span><br>
 
             </div>
             <div class="three-colums">
@@ -251,13 +260,13 @@
             </div>
             <div class="three-colums">
                 <span class='weeklys'>Kcal</span><br>
-                <span class='weeklys'>Carb</span><br>
-                <span class='weeklys'>Sugar</span><br>
-                <span class='weeklys'>Fiber</span><br>
-                <span class='weeklys'>Fat</span><br>
-                <span class='weeklys'>Protein</span><br>
-                <span class='weeklys'>Sodium</span><br>
-                <span class='weeklys'>Potassium</span><br>
+                <span class='weeklys'>Carb(g)</span><br>
+                <span class='weeklys'>Sugar(g)</span><br>
+                <span class='weeklys'>Fiber(g)</span><br>
+                <span class='weeklys'>Fat(g)</span><br>
+                <span class='weeklys'>Protein(g)</span><br>
+                <span class='weeklys'>Sodium(mg)</span><br>
+                <span class='weeklys'>Potassium(mg)</span><br>
 
             </div>
             <div class="three-colums">
@@ -300,13 +309,13 @@
                 </div>
                 <div class="three-colums">
                     <span class='weeklys'>Kcal</span><br>
-                    <span class='weeklys'>Carb</span><br>
-                    <span class='weeklys'>Sugar</span><br>
-                    <span class='weeklys'>Fiber</span><br>
-                    <span class='weeklys'>Fat</span><br>
-                    <span class='weeklys'>Protein</span><br>
-                    <span class='weeklys'>Sodium</span><br>
-                    <span class='weeklys'>Potassium</span><br>
+                    <span class='weeklys'>Carb(g)</span><br>
+                    <span class='weeklys'>Sugar(g)</span><br>
+                    <span class='weeklys'>Fiber(g)</span><br>
+                    <span class='weeklys'>Fat(g)</span><br>
+                    <span class='weeklys'>Protein(g)</span><br>
+                    <span class='weeklys'>Sodium(mg)</span><br>
+                    <span class='weeklys'>Potassium(mg)</span><br>
 
                 </div>
                 <div class="three-colums">
@@ -345,57 +354,8 @@
     </main>
     <main class="daily">
         <h1>Daily Micro Macro Nutrient Total</h1>
-        <!--
-<div role="daily totals" class='stored-recipes'>
-    <span class='totals'>Nutrient</span>
-    <span class='totals'>Total</span>
-    <span class='totals'>%/Daily</span>
-</div>
-<div class="three-colums">
-    <span class='weeklys'>Kcal</span><br>
-    <span class='weeklys'>Carb</span><br>
-    <span class='weeklys'>Sugar</span><br>
-    <span class='weeklys'>Fiber</span><br>
-    <span class='weeklys'>Fat</span><br>
-    <span class='weeklys'>Protein</span><br>
-    <span class='weeklys'>Sodium</span><br>
-    <span class='weeklys'>Potassium</span><br>
-</div>
-<div class="three-colums">
-    <span class='weeklys' id='total-kcal'>0</span><br>
-    <span class='weeklys' id='total-carb'>0</span><br>
-    <span class='weeklys' id='total-sugar'>0</span><br>
-    <span class='weeklys' id='total-fiber'>0</span><br>
-    <span class='weeklys' id='total-fat'>0</span><br>
-    <span class='weeklys' id='total-protein'>0</span><br>
-    <span class='weeklys' id='total-sodium'>0</span><br>
-    <span class='weeklys' id='total-potassium'>0</span><br>
-</div>
-<div class="three-colums">
-    <span class='weeklys' id='percent-kcal'>0</span><br>
-    <span class='weeklys' id='percent-carb'>0</span><br>
-    <span class='weeklys' id='percent-sugar'>0</span><br>
-    <span class='weeklys' id='percent-fiber'>0</span><br>
-    <span class='weeklys' id='percent-fat'>0</span><br>
-    <span class='weeklys' id='percent-protein'>0</span><br>
-    <span class='weeklys' id='percent-sodium'>0</span><br>
-    <span class='weeklys' id='percent-potassium'>0</span><br>
-</div>
-<div role='macro-nutrient-spread' class='macro-div'>
-    <span class='macro-spread'>Protein</span>
-    <span class='macro-spread'>Fat</span>
-    <span class='macro-spread'>Carb</span>
-
-</div>
-<span class='macro-spread' id='daily-protein'>0</span>
-<span class='macro-spread' id='daily-fat'>0</span>
-<span class='macro-spread' id='daily-carb'>0</span>
--->
-
-        <!--   here-->
-
         <div class="stored-recipes">
-            <span class="title">Daily</span><br>
+            <span class="title">Breakfast+Lunch+Dinner</span><br>
             <div>
                 <input type="hidden" id="js-username-breakfast" value=''>
             </div>
@@ -413,13 +373,13 @@
             </div>
             <div class="three-colums">
                 <span class='weeklys'>Kcal</span><br>
-                <span class='weeklys'>Carb</span><br>
-                <span class='weeklys'>Sugar</span><br>
-                <span class='weeklys'>Fiber</span><br>
-                <span class='weeklys'>Fat</span><br>
-                <span class='weeklys'>Protein</span><br>
-                <span class='weeklys'>Sodium</span><br>
-                <span class='weeklys'>Potassium</span><br>
+                <span class='weeklys'>Carb(g)</span><br>
+                <span class='weeklys'>Sugar(g)</span><br>
+                <span class='weeklys'>Fiber(g)</span><br>
+                <span class='weeklys'>Fat(g)</span><br>
+                <span class='weeklys'>Protein(g)</span><br>
+                <span class='weeklys'>Sodium(mg)</span><br>
+                <span class='weeklys'>Potassium(mg)</span><br>
 
             </div>
             <div class="three-colums">
