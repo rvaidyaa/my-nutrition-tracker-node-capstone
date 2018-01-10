@@ -69,6 +69,10 @@ h2 {
     font-size: 20px;
 }
 
+h5 {
+    font-size: 30px;
+}
+
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: black;
@@ -96,7 +100,8 @@ h2 {
 .column {
     display: inline-block;
     width: 32%;
-    vertical-align: top;
+    border: 1px solid silver;
+    border-radius: .5rem
 }
 
 .two-columns {
@@ -783,13 +788,17 @@ footer a:hover {
     .weeklys,
     .user-button,
     .user-input {
-        font-size: 14px;
+        font-size: 11px;
     }
     h1 {
         font-size: 20px;
     }
     h2 {
         font-size: 18px;
+    }
+    .column {
+        display: block;
+        width: 99%;
     }
 }
 

@@ -3,8 +3,6 @@ Node capstone for the thinkful course.
 
 My nutritional tracker is an app designed with nutrition in mind. You can add custom meals and portions and the application will track the micro and macro nutrients you consume. You can even get daily totals! Uses an external api call to nutritionx to get macro nutrient details for specific food items from common restaurants.
 
-https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/landingpage.png
-
 ## Screenshots
 ![Landing page screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/landingpage.png)
 ![Account setup screen shot](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/github-images/signup.png)
@@ -38,33 +36,28 @@ User Stories
 
 As a visitor, not logged in,
 
-*As a visitor, I want to see what the application is about
-*As a visitor I want to see if i am interested in making an account
-*As a visitor, I want a simple sign up page.
+* As a visitor, I want to see what the application is about
+* As a visitor I want to see if i am interested in making an account
+* As a visitor, I want a simple sign up page.
 
 As a logged in user
 
-*As a user, I want be able to add meals
-*As a user I would like a overall view of what I eat
-*As a user I want to see the macro and micro nutrient totals each day
-*As a user I want a link to a weekly summary
+* As a user, I want be able to add meals
+* As a user I would like a overall view of what I eat
+* As a user I want to see the macro and micro nutrient totals each day
 ![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/mainpage.jpg)
 
 When I add meals:
 
-*As a user, I want to be able to add ingrediants in name and quantity
-*As a user, I want to save my recipes
-*As a user, I want to be able to upload a picture of the recipe
-*As a user, I want to be able to view the nutrition profile of the meal in my saved recipes
+* As a user, I want to be able to add ingrediants in name and quantity
+* As a user, I want to save my meals
+* As a user, I want to be able to view the nutrition profile of the meal in my saved meals
+
+* As a user, when i click on the nutrition profile i want a it easily readible with most relevant information at the top.
+* As a user, when i view my weekly totals I want averages
+* As a user I want my averages displayed in my weekly totals
+* As a user I want the micro/macro nutrients available
 ![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/addmeal.jpg)
-
-*As a user, when i click on the nutrition profile i want a it easily readible with most relevant information at the top.
-*As a user, when i view my weekly totals I want averages
-*As a user I want my averages displayed in my weekly totals
-*As a user I want the micro/macro nutrients available
-
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailyview.jpg)
-![UI Flow handwritten draft](https://github.com/rvaidyaa/my-nutrition-tracker-node-capstone/blob/master/Wireframe/dailycontinued.jpg)
 
 
 ## Working Prototype
@@ -73,30 +66,29 @@ Find a working prototype with Node at http://my-nutrition-tracker-node.herokuapp
 
 ## Technical
 
-<h3>Front End</h3>
-<ul>
-<li>HTML5</li>
-<li>CSS3</li>
-<li>JavaScript</li>
-<li>jQuery</li>
-</ul>
-<h3>Back End</h3>
-<ul>
-<li>Node.js</li>
-<li>Express.js</li>
-<li>MongoDB</li>
-<li>Mongoose</li>
-<li>mLab database</li>
-<li><a href="https://mochajs.org/">Mocha</a> and <a href="http://chaijs.com/">Chai</a> for testing</li>
-</ul>
-<h3>Responsive</h3>
-<ul>
-<li>The app is responsive and optimized for both desktop and mobile viewing and use.</li>
-</ul>
-<h3>Security</h3>
-<ul>
-<li>User passwords are encrypted using <a href="https://github.com/dcodeIO/bcrypt.js">bcrypt.js</a>.</li>
-</ul>
+### Front End
+
+* HTML5
+* CSS3
+* JavaScript
+* jQuery
+
+### Back End
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* mLab database
+"https://mochajs.org/"  "http://chaijs.com/"
+
+### Responsive
+
+* The app is responsive and optimized for both desktop and mobile viewing and use.
+
+### Security
+
+* User passwords are encrypted using "https://github.com/dcodeIO/bcrypt.js"
 
 ## API Documentation
 API endpoints for the back end include:
