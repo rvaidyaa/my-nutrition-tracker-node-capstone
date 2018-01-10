@@ -105,4 +105,4 @@ API endpoints for the back end include:
 Planned additional features and improvements will allow users to:
 * Weekly tracker
 * Change password
-* Update email address
+
