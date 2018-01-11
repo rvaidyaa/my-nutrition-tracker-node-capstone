@@ -101,7 +101,7 @@ h5 {
     display: inline-block;
     width: 32%;
     border: 1px solid silver;
-    border-radius: .5rem
+    border-radius: .5rem;
 }
 
 .two-columns {
@@ -799,6 +799,7 @@ footer a:hover {
     .column {
         display: block;
         width: 99%;
+        margin-bottom: .5rem;
     }
 }
 
