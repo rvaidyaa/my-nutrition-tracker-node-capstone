@@ -769,6 +769,7 @@ function updateMealTimeNutrition(dataMatches) {
 
 
 };
+
 //Step 2 - Use function and objects and find the triggers
 
 $(document).ready(function () {
